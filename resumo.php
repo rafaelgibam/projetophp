@@ -11,6 +11,7 @@ $destino = $_POST['destino'];
 $transporte = $_POST['transporte'];
 $hotel = $_POST['hotel'];
 $diarias = $_POST['diarias'];
+$translado = $_POST['translado'];
 $total = $_POST['total'];
 $passeio = $_POST['passeio'];
 
@@ -23,7 +24,7 @@ $passeio = $_POST['passeio'];
     <img class="mb-5" src="http://via.placeholder.com/150x150" alt="foto-perfil">
     <p>Destino: <?= $destino ?></p><br>
     <p>Transporte: <?= $transporte ?></p><br>
-    <p>Hotel: <?= $hotel ?></p><br>
+    <p>Hotel: <?= $hotel ?> Estrela(s)</p><br>
     <p><?= $diarias ?> Diaria(s)</p><br>
     <p>Translado: <?= $translado ?></p><br>
     <p>Total: <?= $total ?></p><br>

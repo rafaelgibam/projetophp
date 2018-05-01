@@ -11,7 +11,7 @@ $cpf = $_POST['cpf'];
 ?>
 
 <div class="container">
-    <form class="form-perfil mt-5 mb-5" action="resumosonho.php" method="post">
+    <form class="form-perfil mt-5 mb-5" action="sonhocadastro.php" method="post">
       <h2 class="mt-5">Viagem dos Sonhos</h2>
       <hr><br>
 
