@@ -133,7 +133,7 @@ $cpf = $_POST['cpf'];
           <textarea class="form-control" name="passeio" id="passeio" rows="12" cols="80" placeholder="Digite sobre seu passeio"></textarea>
         </div>
       </div>
-      <input class="btn btn-primary mr-3" type="submit" value="Confirmar"> <a href="sonho">Viagem do sonho!</a>
+      <input class="btn btn-primary mr-3" type="submit" value="Confirmar"> <a href="sonho.php">Viagem do sonho!</a>
     </form>
 </div>
 
