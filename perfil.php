@@ -10,7 +10,7 @@ $cpf = $_POST['cpf'];
 
 if (isset ($_FILES['foto']))
 	{
-	$ext = strtolower (substr($_FILES['foto'] ['name'], -4));
+	$ext = strtolower(substr($_FILES['foto'] ['name'], -4));
 	$dir = 'uploads/';
 		move_uploaded_file ($_FILES['foto'] ['tmp_name'], $dir . $_POST['nome'] . '001' . $ext);
 	}
