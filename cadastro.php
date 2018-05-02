@@ -1,6 +1,6 @@
 <?php require_once 'layouts/header.php'; ?>
 <div class="container">
-    <form class="form-cadastro" action="perfil.php" method="post">
+    <form class="form-cadastro" action="perfil.php" method="post" enctype="multipart/form-data">
         <div class="form-row">
           <div class="form-group col-6">
             <label for="login">Login</label>
