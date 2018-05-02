@@ -1,10 +1,10 @@
 <?php
 
-$login =  (isset($_POST['login'])) ? $_POST['login'] : null;
-$senha =  (isset($_POST['senha'])) ? $_POST['senha'] : null;
+$login = (isset($_POST['login'])) ? $_POST['login'] : null;
+$senha = (isset($_POST['senha'])) ? $_POST['senha'] : null;
 
 $dir = "assets/uploadstxt";
-$arquivo = $dir . "usuarios.txt";
+$arquivo = $dir . "/usuarios.txt";
 $ponteiro = fopen($arquivo, "r");
 
 $logintxt;
@@ -12,21 +12,21 @@ $senhatxt;
 
 while (!feof($ponteiro)){
   $linha = fgets($ponteiro, 4096);
-  if (strpos($linha, 'LOGIN@') !== false) {
-    $logintxt = $linha;
+  if (strpos($linha, 'LOGIN@')) {
+    $logintxt = explode("@", $linha);
   }
-  if(strpos($linha, 'SENHA@') !== false){
-    $senhatxt = $linha;
+  if(strpos($linha, 'SENHA@')){
+    $senhatxt = explode("@", $linha);
   }
 }
+
 fclose($ponteiro);
 
-if($login == $logintxt && $senha == $senhatxt){
+if($login == $senhatxt[1] || $senha == $senhatxt[3]){
   echo '<center>' . '<img src="assets/img/loading.gif" alt="loadgif">' . '</center>';
   header("location: perfil.php");
-}else{
+}else if(isset($login) && isset($senha)){
   echo "Login e Senha Incorretos!";
-  header("location: index.php");
 }
 
 ?>
@@ -39,11 +39,11 @@ if($login == $logintxt && $senha == $senhatxt){
       <form method="post" class="form-login">
         <div class="form-group">
           <label for="login">Login</label>
-          <input type="text" class="form-control" id="login" placeholder="Entre com seu Login">
+          <input type="text" class="form-control" id="login" name="login" placeholder="Entre com seu Login">
         </div>
         <div class="form-group">
           <label for="senha">Senha</label>
-          <input type="password" class="form-control" id="senha" placeholder="Entre com sua senha">
+          <input type="password" class="form-control" id="senha" name="senha" placeholder="Entre com sua senha">
         </div>
 
         <button type="submit" class="btn btn-primary">Entrar</button>
