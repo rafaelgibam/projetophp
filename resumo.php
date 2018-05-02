@@ -1,19 +1,71 @@
 <?php require_once 'layouts/header.php';
 
-$login = $_POST['login'];
-$senha = $_POST['senha'];
-$nome = $_POST['nome'];
-$sobrenome = $_POST['sobrenome'];
-$fone = $_POST['fone'];
-$rg = $_POST['rg'];
-$cpf = $_POST['cpf'];
-$destino = $_POST['destino'];
+$destino = $_POST['estado'];
 $transporte = $_POST['transporte'];
-$hotel = $_POST['hotel'];
-$diarias = $_POST['diarias'];
+$diarias  = $_POST['diarias'];
 $translado = $_POST['translado'];
-$total = $_POST['total'];
+$translado =  (isset($_POST['translado'])) ? true : false;
+$hotel = $_POST['hotel'];
+$total = (isset($_POST['total'])) ? $_POST['total'] : null;
 $passeio = $_POST['passeio'];
+
+if($destino === "Recife"){
+    if($transporte==="Avião" && $diarias==="tres"){
+        $total = "R$3.000,00";
+    }
+    elseif ($transporte==="Navio" && $diarias==="tres") {
+      $total = "R$4.000,00";
+    }
+    elseif ($transporte==="Ônibus" && $diarias==="tres") {
+      $total = "R$1.500,00";
+    }
+
+}
+elseif ($destino === "Natal") {
+  if($transporte==="Avião" && $diarias==="tres"){
+      $total = "R$2.000,00";
+  }
+  elseif ($transporte==="Navio" && $diarias==="tres") {
+    $total = "R$6.000,00";
+  }
+  elseif ($transporte==="Ônibus" && $diarias==="tres") {
+    $total = "R$3.500,00";
+  }
+}
+elseif ($destino === "Porto de Galinhas") {
+  if($transporte==="Avião" && $diarias==="tres"){
+      $total = "R$3.000,00";
+  }
+  elseif ($transporte==="Navio" && $diarias==="tres") {
+    $total = "R$7.000,00";
+  }
+  elseif ($transporte==="Ônibus" && $diarias==="tres") {
+    $total = "R$1.000,00";
+  }
+}
+elseif ($destino === "João Pessoa") {
+  if($transporte==="Avião" && $diarias==="tres"){
+      $total = "R$4.000,00";
+  }
+  elseif ($transporte==="Navio" && $diarias==="tres") {
+    $total = "R$5.500,00";
+  }
+  elseif ($transporte==="Ônibus" && $diarias==="tres") {
+    $total = "R$1.700,00";
+  }
+}
+
+if ($destino ==="Recife")
+	{
+	$img =	 "uploads/recife.jpg";
+	}
+  elseif ($destino ==="Natal") {
+	$img =	 "uploads/natal.jpg";
+  }
+  elseif ($destino ==="Porto") {
+	$img =	 "uploads/porto.jpg";
+  }
+
 
 ?>
 
@@ -21,11 +73,11 @@ $passeio = $_POST['passeio'];
   <div class="resumo-layout">
     <h1>Resumo da Viagem</h1>
     <hr><br>
-    <img class="mb-5" src="http://via.placeholder.com/150x150" alt="foto-perfil">
+    <p><img src="<?php echo $img; ?>" alt="" class="img-thumbnail"></p><br>
     <p>Destino: <?= $destino ?></p><br>
     <p>Transporte: <?= $transporte ?></p><br>
     <p>Hotel: <?= $hotel ?> Estrela(s)</p><br>
-    <p><?= $diarias ?> Diaria(s)</p><br>
+    <p>Diaria(s): <?= $diarias ?></p><br>
     <p>Translado: <?= $translado ?></p><br>
     <p>Total: <?= $total ?></p><br>
     <p>Passeio: <?= $passeio ?></p>

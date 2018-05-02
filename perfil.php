@@ -21,7 +21,7 @@ if (isset ($_FILES['foto']))
     <form class="form-perfil mt-5 mb-5" action="resumo.php" method="post">
       <div class="form-row">
         <div class="form-group col-2">
-          <img src="<?php echo $dir . $_POST["nome"] . '001' . $ext; ?>" alt="" class="img-thumbnail">
+          <img src="<?php echo $dir . $_POST["nome"] . $ext; ?>" alt="" class="img-thumbnail">
         </div>
 
         <div class="form-group col-2">
@@ -69,24 +69,30 @@ if (isset ($_FILES['foto']))
         <div class="form-group col-4">
           <label for="destino">Destino:</label>
           <select class="custom-select" name="estado">
-            <?php foreach ($estado as $key => $value): ?>
-              <option value=" <?= $key ?> "> <?= $value ?> </option>
-            <?php endforeach; ?>
+             <<option value="Recife">Recife</option>
+             <<option value="João Pessoa">João Pessoa</option>
+             <<option value="Porto de Galinhas">Porto de Galinhas</option>
+             <<option value="Natal">Natal</option>
           </select>
         </div>
-
         <div class="form-group col-4">
           <label for="transporte">Transporte:</label>
           <select class="custom-select" name="transporte">
-            <?php foreach ($transporte as $key => $value): ?>
-              <option value="<?= $key ?>"><?= $value ?></option>
-            <?php endforeach; ?>
+            <<option value="Navio">Navio</option>
+            <<option value="Avião">Avião</option>
+            <<option value="Ônibus">Ônibus</option>
+
           </select>
         </div>
 
         <div class="form-group col-4">
           <label for="diarias">Diarias:</label>
-          <input type="number" class="form-control" name="diarias">
+          <select class="custom-select" name="diarias">
+            <<option value="um">Um dia</option>
+            <<option value="dois">Dois dias</option>
+            <<option value="tres">Três dias</option>
+
+          </select>
         </div>
 
       </div>
@@ -123,7 +129,7 @@ if (isset ($_FILES['foto']))
         <div class="form-check col-6">
           <label class="form-check-label position-static" for="hotel">Translado:</label>
           <div class="form-check">
-            <input class="form-check-input position-static" type="radio" id="nao" name="translado" value="sim">
+            <input class="form-check-input position-static" type="radio" id="sim" name="translado" value="sim">
             <label class="form-check-label position-static" for="sim">Sim</label>
           </div>
 
