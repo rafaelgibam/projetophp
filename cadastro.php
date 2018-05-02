@@ -1,4 +1,13 @@
-<?php require_once 'layouts/header.php'; ?>
+<?php require_once 'layouts/header.php';
+
+if (isset ($_FILES['foto']))
+	{
+	$ext = strtolower (substr($_FILES['foto'] ['name'], -4));
+	$dir = 'uploads/';
+		move_uploaded_file ($_FILES['foto'] ['tmp_name'], $dir . $_POST['nome'] . '001' . $ext);
+	}
+?>
+
 <div class="container">
     <form class="form-cadastro" action="perfil.php" method="post" enctype="multipart/form-data">
         <div class="form-row">

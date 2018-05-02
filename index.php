@@ -1,9 +1,9 @@
 <?php
 
-$login = $_POST['login'];
-$senha = $_POST['senha'];
+$login =  (isset($_POST['login'])) ? $_POST['login'] : null;
+$senha =  (isset($_POST['senha'])) ? $_POST['senha'] : null;
 
-$dir = "/assets/uploadstxt";
+$dir = "assets/uploadstxt";
 $arquivo = $dir . "usuarios.txt";
 $ponteiro = fopen($arquivo, "r");
 

@@ -8,13 +8,20 @@ $fone = $_POST['fone'];
 $rg = $_POST['rg'];
 $cpf = $_POST['cpf'];
 
+if (isset ($_FILES['foto']))
+	{
+	$ext = strtolower (substr($_FILES['foto'] ['name'], -4));
+	$dir = 'uploads/';
+		move_uploaded_file ($_FILES['foto'] ['tmp_name'], $dir . $_POST['nome'] . '001' . $ext);
+	}
+
 ?>
 
 <div class="container">
     <form class="form-perfil mt-5 mb-5" action="resumo.php" method="post">
       <div class="form-row">
         <div class="form-group col-2">
-          <img src="http://via.placeholder.com/150x150" alt="foto-perfil">
+          <img src="<?php echo $dir . $_POST["nome"] . '001' . $ext; ?>" alt="" class="img-thumbnail">
         </div>
 
         <div class="form-group col-2">
