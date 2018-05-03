@@ -1,6 +1,28 @@
 <?php require_once 'layouts/header.php';
 
-<<<<<<< HEAD
+$dir = "assets/uploadstxt";
+$arquivo = $dir . "/usuarios.txt";
+
+$linha = file_get_contents($arquivo);
+
+$user = explode(';', $linha);
+
+if(isset($_POST['login']) || $login === $user[0] || $senha === $user[1]){
+
+	$login = $user[0];
+	$senha = $user[1];
+	$nome = $user[2];
+	$sobrenome = $user[3];
+	$fone = $user[4];
+	$rg = $user[5];
+	$cpf = $user[6];
+	$foto = 'assets/uploads/admin001.jpg';
+
+}else{
+  echo "Login e Senha Incorretos!";
+  header("location: index.php");
+}
+
 if(isset($_POST['cadastrar']))
 {
 	$login = $_POST['login'];
@@ -12,36 +34,8 @@ if(isset($_POST['cadastrar']))
 	$cpf = $_POST['cpf'];
 }
 
-$dir = "assets/uploadstxt";
-$arquivo = $dir . "/usuarios.txt";
 
-$linha = file_get_contents($arquivo);
-
-$user = explode(';',$linha);
-
-if($_POST['login'] == "admin" || $_POST['senha'] == "123" && $_POST == 'login')
-{
-	$login = $user[0];
-	$senha = $user[1];
-	$nome = $user[2];
-	$sobrenome = $user[3];
-	$fone = $user[4];
-	$rg = $user[5];
-	$cpf = $user[6];
-}
-
-if(isset ($_FILES['foto']))
-=======
-$login = (isset($_POST['login'])) ? $_POST['login'] : null;
-$senha = (isset($_POST['senha'])) ? $_POST['senha'] : null;
-$nome =  (isset($_POST['nome'])) ? $_POST['nome'] : null;
-$sobrenome = (isset($_POST['sobrenome'])) ? $_POST['sobrenome'] : null;
-$fone = (isset($_POST['fone'])) ? $_POST['fone'] : null;
-$rg = (isset($_POST['rg'])) ? $_POST['rg'] : null;
-$cpf = (isset($_POST['cpf'])) ? $_POST['cpf'] : null;
-
-if (isset ($_FILES['foto']))
->>>>>>> origin
+if(isset($_FILES['foto']))
 	{
 	$ext = strtolower(substr($_FILES['foto'] ['name'], -4));
 	$dir = 'uploads/';
@@ -54,17 +48,14 @@ if (isset ($_FILES['foto']))
 
 	$diarias = explode("@", file_get_contents('diarias.txt'));
 
+
 ?>
 
 <div class="container">
     <form class="form-perfil mt-5 mb-5" action="resumo.php" method="post">
       <div class="form-row">
         <div class="form-group col-2">
-<<<<<<< HEAD
           <img src="<?php echo $dir . $_POST["nome"] . "001" . $ext; ?>" alt="" class="img-thumbnail">
-=======
-          <img src="<?php echo $dir . $_POST["nome"] . '001' . $ext; ?>" alt="" class="img-thumbnail">
->>>>>>> origin
         </div>
 
         <div class="form-group col-2">
@@ -121,15 +112,9 @@ if (isset ($_FILES['foto']))
         <div class="form-group col-4">
           <label for="transporte">Transporte:</label>
           <select class="custom-select" name="transporte">
-<<<<<<< HEAD
-            <<option value="Navio">Navio</option>
-            <<option value="Avião">Avião</option>
-            <<option value="Ônibus">Ônibus</option>
-=======
 						<?php foreach ($transportes as $key => $value): ?>
 							<option value=<?php $key ?> > <?php echo $value; ?> </option>
 						<?php endforeach; ?>
->>>>>>> origin
           </select>
 
         </div>
