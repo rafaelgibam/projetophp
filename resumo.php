@@ -155,7 +155,6 @@ if ($destino == "Recife"){
     $img = "uploads/sirinha.jpg";
   }
 
-
 ?>
 
 <div class="container">
@@ -171,7 +170,7 @@ if ($destino == "Recife"){
     <p>Total: <?= $total ?></p><br>
     <p>Passeio: <?= $passeio ?></p>
   </div>
-
+  <a href="perfil.php"></a>
 </div>
 
 

@@ -1,7 +1,8 @@
 <?php require_once 'layouts/header.php';
 
-$dir = "assets/uploadstxt";
-$arquivo = $dir . "/usuarios.txt";
+$dirtxt = "assets/uploadstxt";
+$dir = "uploads/";
+$arquivo = $dirtxt . "/usuarios.txt";
 
 $linha = file_get_contents($arquivo);
 
@@ -16,8 +17,6 @@ if(isset($_POST['login']) || $login === $user[0] || $senha === $user[1]){
 	$fone = $user[4];
 	$rg = $user[5];
 	$cpf = $user[6];
-	$foto = 'assets/uploads/admin001.jpg';
-
 }else{
   echo "Login e Senha Incorretos!";
   header("location: index.php");
@@ -37,9 +36,9 @@ if(isset($_POST['cadastrar']))
 
 if(isset($_FILES['foto']))
 	{
-	$ext = strtolower(substr($_FILES['foto'] ['name'], -4));
-	$dir = 'uploads/';
-		move_uploaded_file ($_FILES['foto'] ['tmp_name'], $dir . $_POST['nome'] . '001' . $ext);
+		$ext = strtolower(substr($_FILES['foto']['name'], -4));
+		$dir = 'uploads/';
+		move_uploaded_file($_FILES['foto']['tmp_name'], $dir . $_POST['nome'] . '001' . $ext);
 	}
 
 	$linhas = explode("@", file_get_contents('destino.txt'));
@@ -48,14 +47,15 @@ if(isset($_FILES['foto']))
 
 	$diarias = explode("@", file_get_contents('diarias.txt'));
 
-
+print_r($_POST);
+print_r($_FILES);
 ?>
 
 <div class="container">
     <form class="form-perfil mt-5 mb-5" action="resumo.php" method="post">
       <div class="form-row">
         <div class="form-group col-2">
-          <img src="<?php echo $dir . $_POST["nome"] . "001" . $ext; ?>" alt="" class="img-thumbnail">
+          <img src="<?php echo $dir . $nome . "001.jpg"; ?>" alt="" class="img-thumbnail">
         </div>
 
         <div class="form-group col-2">
