@@ -1,12 +1,12 @@
 <?php require_once 'layouts/header.php';
 
-$login = $_POST['login'];
-$senha = $_POST['senha'];
-$nome = $_POST['nome'];
-$sobrenome = $_POST['sobrenome'];
-$fone = $_POST['fone'];
-$rg = $_POST['rg'];
-$cpf = $_POST['cpf'];
+$login = (isset($_POST['login'])) ? $_POST['login'] : null;
+$senha = (isset($_POST['senha'])) ? $_POST['senha'] : null;
+$nome =  (isset($_POST['nome'])) ? $_POST['nome'] : null;
+$sobrenome = (isset($_POST['sobrenome'])) ? $_POST['sobrenome'] : null;
+$fone = (isset($_POST['fone'])) ? $_POST['fone'] : null;
+$rg = (isset($_POST['rg'])) ? $_POST['rg'] : null;
+$cpf = (isset($_POST['cpf'])) ? $_POST['cpf'] : null;
 
 if (isset ($_FILES['foto']))
 	{
@@ -15,13 +15,19 @@ if (isset ($_FILES['foto']))
 		move_uploaded_file ($_FILES['foto'] ['tmp_name'], $dir . $_POST['nome'] . '001' . $ext);
 	}
 
+	$linhas = explode("@", file_get_contents('destino.txt'));
+
+	$transportes = explode("@", file_get_contents('transporte.txt'));
+
+	$diarias = explode("@", file_get_contents('diarias.txt'));
+
 ?>
 
 <div class="container">
     <form class="form-perfil mt-5 mb-5" action="resumo.php" method="post">
       <div class="form-row">
         <div class="form-group col-2">
-          <img src="<?php echo $dir . $_POST["nome"] . $ext; ?>" alt="" class="img-thumbnail">
+          <img src="<?php echo $dir . $_POST["nome"] . '001' . $ext; ?>" alt="" class="img-thumbnail">
         </div>
 
         <div class="form-group col-2">
@@ -61,7 +67,6 @@ if (isset ($_FILES['foto']))
           <input type="text" id="senha" name="senha" class="form-control" value="<?= $senha ?>">
         </div>
       </div>
-
       <h2 class="mt-5">Opções de Viagens</h2>
       <hr><br>
 
@@ -69,29 +74,28 @@ if (isset ($_FILES['foto']))
         <div class="form-group col-4">
           <label for="destino">Destino:</label>
           <select class="custom-select" name="estado">
-             <<option value="Recife">Recife</option>
-             <<option value="João Pessoa">João Pessoa</option>
-             <<option value="Porto de Galinhas">Porto de Galinhas</option>
-             <<option value="Natal">Natal</option>
+
+						<?php foreach ($linhas as $key => $value): ?>
+							<option value= <?php $key ?> ><?php echo $value; ?></option>
+						<?php endforeach; ?>
+					}
           </select>
         </div>
         <div class="form-group col-4">
           <label for="transporte">Transporte:</label>
           <select class="custom-select" name="transporte">
-            <<option value="Navio">Navio</option>
-            <<option value="Avião">Avião</option>
-            <<option value="Ônibus">Ônibus</option>
-
+						<?php foreach ($transportes as $key => $value): ?>
+							<option value=<?php $key ?> > <?php echo $value; ?> </option>
+						<?php endforeach; ?>
           </select>
         </div>
 
         <div class="form-group col-4">
           <label for="diarias">Diarias:</label>
           <select class="custom-select" name="diarias">
-            <<option value="um">Um dia</option>
-            <<option value="dois">Dois dias</option>
-            <<option value="tres">Três dias</option>
-
+						<?php foreach ($diarias as $key => $value): ?>
+							<option value=<?php $key ?> > <?php echo $value; ?> </option>
+						<?php endforeach; ?>
           </select>
         </div>
 

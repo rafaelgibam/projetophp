@@ -3,6 +3,7 @@
 $destino = $_POST['estado'];
 $transporte = $_POST['transporte'];
 $diarias  = $_POST['diarias'];
+
 $translado = $_POST['translado'];
 $translado =  (isset($_POST['translado'])) ? true : false;
 $hotel = $_POST['hotel'];
@@ -55,17 +56,20 @@ elseif ($destino === "João Pessoa") {
   }
 }
 
-if ($destino ==="Recife")
-	{
+if ($destino == 0){
 	$img =	 "uploads/recife.jpg";
 	}
-  elseif ($destino ==="Natal") {
+  elseif ($destino == 1) {
 	$img =	 "uploads/natal.jpg";
   }
-  elseif ($destino ==="Porto") {
+  elseif ($destino == 2) {
 	$img =	 "uploads/porto.jpg";
   }
+  elseif ($destino ==3) {
+    $img = "uploads/sirinha.jpg";
+  }
 
+print_r($_POST);
 
 ?>
 
