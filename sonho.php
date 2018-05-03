@@ -1,11 +1,5 @@
 <?php require_once 'layouts/header.php';
 
-$linhas = explode("@", file_get_contents('destino.txt'));
-
-$transportes = explode("@", file_get_contents('transporte.txt'));
-
-$diarias = explode("@", file_get_contents('diarias.txt'));
-
 ?>
 
 <div class="container">
@@ -16,31 +10,16 @@ $diarias = explode("@", file_get_contents('diarias.txt'));
       <div class="form-row">
         <div class="form-group col-4">
           <label for="destino">Destino:</label>
-          <select class="custom-select" name="estado">
-
-						<?php foreach ($linhas as $key => $value): ?>
-							<option value= <?php echo $value; ?> ><?php echo $value; ?></option>
-						<?php endforeach; ?>
-					}
-          </select>
+          <input type="text" id="destino" name="destino" class="form-control" placeholder="Qual o destino da viagem dos seus Sonhos?">
         </div>
         <div class="form-group col-4">
           <label for="transporte">Transporte:</label>
-          <select class="custom-select" name="transporte">
-						<?php foreach ($transportes as $key => $value): ?>
-							<option value=<?php echo $value; ?> > <?php echo $value; ?> </option>
-						<?php endforeach; ?>
-          </select>
-
+          <input type="text" id="transporte" name="transporte" class="form-control" placeholder="Qual o transporte desejaria utilizar?">
         </div>
 
         <div class="form-group col-4">
           <label for="diarias">Diarias:</label>
-          <select class="custom-select" name="diarias">
-						<?php foreach ($diarias as $key => $value): ?>
-							<option value=<?php echo $value; ?> > <?php echo $value; ?> </option>
-						<?php endforeach; ?>
-          </select>
+          <input type="text" id="diarias" name="diarias" class="form-control" placeholder="Quantos dias gostaria passar nesta viagem?">
         </div>
 
       </div>
