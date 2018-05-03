@@ -37,9 +37,9 @@ if(isset($_POST['cadastrar']))
 
 if(isset($_FILES['foto']))
 	{
-	$ext = strtolower(substr($_FILES['foto'] ['name'], -4));
-	$dir = 'uploads/';
-		move_uploaded_file ($_FILES['foto'] ['tmp_name'], $dir . $_POST['nome'] . '001' . $ext);
+		$ext = strtolower(substr($_FILES['foto']['name'], -4));
+		$dir = 'uploads/';
+		move_uploaded_file($_FILES['foto']['tmp_name'], $dir . $_POST['nome'] . '001' . $ext);
 	}
 
 	$linhas = explode("@", file_get_contents('destino.txt'));
@@ -48,7 +48,8 @@ if(isset($_FILES['foto']))
 
 	$diarias = explode("@", file_get_contents('diarias.txt'));
 
-
+print_r($_POST);
+print_r($_FILES);
 ?>
 
 <div class="container">
