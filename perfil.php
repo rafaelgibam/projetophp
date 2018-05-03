@@ -8,20 +8,6 @@ $linha = file_get_contents($arquivo);
 
 $user = explode(';', $linha);
 
-if(isset($_POST['login']) || $login === $user[0] || $senha === $user[1]){
-
-	$login = $user[0];
-	$senha = $user[1];
-	$nome = $user[2];
-	$sobrenome = $user[3];
-	$fone = $user[4];
-	$rg = $user[5];
-	$cpf = $user[6];
-}else{
-  echo "Login e Senha Incorretos!";
-  header("location: index.php");
-}
-
 if(isset($_POST['cadastrar']))
 {
 	$login = $_POST['login'];
@@ -31,14 +17,25 @@ if(isset($_POST['cadastrar']))
 	$fone = $_POST['fone'];
 	$rg = $_POST['rg'];
 	$cpf = $_POST['cpf'];
+
+}else if(isset($_POST['login']) || $login === $user[0] || $senha === $user[1]){
+	$login = $user[0];
+	$senha = $user[1];
+	$nome = $user[2];
+	$sobrenome = $user[3];
+	$fone = $user[4];
+	$rg = $user[5];
+	$cpf = $user[6];
+}else{
+	echo "Login e Senha Incorretos!";
+  header("location: index.php");
 }
 
-
-if(isset($_FILES['foto']))
+if(isset($_FILES['foto']) || isset($_POST['cadastrar']))
 	{
 		$ext = strtolower(substr($_FILES['foto']['name'], -4));
 		$dir = 'uploads/';
-		move_uploaded_file($_FILES['foto']['tmp_name'], $dir . $_POST['nome'] . '001' . $ext);
+		move_uploaded_file( $_FILES['foto']['tmp_name'], $dir . $_POST['nome'] . '001' . $ext );
 	}
 
 	$linhas = explode("@", file_get_contents('destino.txt'));
@@ -46,6 +43,7 @@ if(isset($_FILES['foto']))
 	$transportes = explode("@", file_get_contents('transporte.txt'));
 
 	$diarias = explode("@", file_get_contents('diarias.txt'));
+	
 ?>
 
 <div class="container">
