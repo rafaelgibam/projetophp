@@ -104,7 +104,7 @@ print_r($_FILES);
           <select class="custom-select" name="estado">
 
 						<?php foreach ($linhas as $key => $value): ?>
-							<option value= <?php $key ?> ><?php echo $value; ?></option>
+							<option value= <?php echo $value; ?> ><?php echo $value; ?></option>
 						<?php endforeach; ?>
 					}
           </select>
@@ -113,7 +113,7 @@ print_r($_FILES);
           <label for="transporte">Transporte:</label>
           <select class="custom-select" name="transporte">
 						<?php foreach ($transportes as $key => $value): ?>
-							<option value=<?php $key ?> > <?php echo $value; ?> </option>
+							<option value=<?php echo $value; ?> > <?php echo $value; ?> </option>
 						<?php endforeach; ?>
           </select>
 
@@ -123,7 +123,7 @@ print_r($_FILES);
           <label for="diarias">Diarias:</label>
           <select class="custom-select" name="diarias">
 						<?php foreach ($diarias as $key => $value): ?>
-							<option value=<?php $key ?> > <?php echo $value; ?> </option>
+							<option value=<?php echo $value; ?> > <?php echo $value; ?> </option>
 						<?php endforeach; ?>
           </select>
         </div>
