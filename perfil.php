@@ -46,9 +46,6 @@ if(isset($_FILES['foto']))
 	$transportes = explode("@", file_get_contents('transporte.txt'));
 
 	$diarias = explode("@", file_get_contents('diarias.txt'));
-
-print_r($_POST);
-print_r($_FILES);
 ?>
 
 <div class="container">

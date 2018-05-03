@@ -1,37 +1,162 @@
 <?php require_once 'layouts/header.php';
 
-$login = $_POST['login'];
-$senha = $_POST['senha'];
-$nome = $_POST['nome'];
-$sobrenome = $_POST['sobrenome'];
-$fone = $_POST['fone'];
-$rg = $_POST['rg'];
-$cpf = $_POST['cpf'];
-$destino = $_POST['destino'];
+$destino = $_POST['estado'];
 $transporte = $_POST['transporte'];
-$hotel = $_POST['hotel'];
-$diarias = $_POST['diarias'];
+$diarias  = $_POST['diarias'];
+
 $translado = $_POST['translado'];
-$total = $_POST['total'];
+$translado =  (isset($_POST['translado'])) ? true : false;
+$hotel = $_POST['hotel'];
+$total = (isset($_POST['total'])) ? $_POST['total'] : null;
 $passeio = $_POST['passeio'];
+
+if($destino == "Recife"){
+    if($transporte== "Aviao" && $diarias== "Tres"){
+        $total = "R$3.000,00";
+    }
+    elseif ($transporte== "Aviao" && $diarias== "Dois") {
+      $total = "R$2.500,00";
+    }
+    elseif ($transporte== "Aviao" && $diarias== "Um") {
+      $total = "R$1.500,00";
+    }
+
+    if ($transporte== "Navio" && $diarias== "Tres") {
+      $total = "R$4.000,00";
+    }
+    elseif ($transporte== "Navio" && $diarias== "Dois") {
+      $total = "R$3.500,00";
+    }
+    elseif ($transporte== "Navio" && $diarias== "Um") {
+      $total = "R$2.500,00";
+    }
+
+    if ($transporte== "Onibus" && $diarias== "Tres") {
+      $total = "R$1.500,00";
+    }elseif ($transporte== "Onibus" && $diarias== "Dois") {
+      $total = "R$3.500,00";
+    }
+    elseif ($transporte== "Onibus" && $diarias== "Um") {
+      $total = "R$2.500,00";
+    }
+
+}
+
+elseif ($destino == "Natal") {
+    if($transporte== "Aviao" && $diarias== "Tres"){
+        $total = "R$3.000,00";
+    }
+      elseif ($transporte== "Aviao" && $diarias== "Dois") {
+        $total = "R$2.500,00";
+      }
+      elseif ($transporte== "Aviao" && $diarias== "Um") {
+        $total = "R$800,00";
+      }
+
+    if ($transporte== "Navio" && $diarias== "Tres") {
+      $total = "R$6.000,00";
+    }
+      elseif ($transporte== "Navio" && $diarias== "Dois") {
+        $total = "R$4.500,00";
+      }
+      elseif ($transporte== "Navio" && $diarias== "Um") {
+        $total = "R$3.500,00";
+      }
+
+    if ($transporte== "Onibus" && $diarias== "Tres") {
+      $total = "R$3.500,00";
+    }
+      elseif ($transporte== "Onibus" && $diarias== "Dois") {
+        $total = "R$2.500,00";
+      }
+      elseif ($transporte== "Onibus" && $diarias== "Um") {
+        $total = "R$500,00";
+      }
+
+
+}
+elseif ($destino == "Sirinhaem") {
+    if($transporte== "Aviao" && $diarias== "Tres"){
+        $total = "R$1.000,00";
+    }
+      elseif ($transporte== "Aviao" && $diarias== "Dois") {
+        $total = "R$700,00";
+      }
+      elseif ($transporte== "Aviao" && $diarias== "Um") {
+        $total = "R$500,00";
+      }
+
+    if ($transporte== "Navio" && $diarias== "Tres") {
+      $total = "R$2.000,00";
+    }
+      elseif ($transporte== "Navio" && $diarias== "Dois") {
+        $total = "R$1.500,00";
+      }
+      elseif ($transporte== "Navio" && $diarias== "Um") {
+        $total = "R$500,00";
+      }
+
+
+  if ($transporte== "Onibus" && $diarias=="Tres") {
+    $total = "R$800,00";
+  }
+    elseif ($transporte== "Onibus" && $diarias== "Dois") {
+      $total = "R$500,00";
+    }
+    elseif ($transporte== "Onibus" && $diarias== "Um") {
+      $total = "R$350,00";
+    }
+
+}
+
+elseif ($destino == "Porto") {
+  if($transporte== "Aviao" && $diarias== "Tres"){
+      $total = "R$4.000,00";
+  }
+    elseif ($transporte== "Aviao" && $diarias== "Dois") {
+      $total = "R$3.500,00";
+    }
+    elseif ($transporte== "Aviao" && $diarias== "Um") {
+      $total = "R$2.500,00";
+    }
+
+
+  if ($transporte== "Navio" && $diarias== "Tres") {
+    $total = "R$6.000,00";
+  }
+    elseif ($transporte== "Navio" && $diarias== "Dois") {
+      $total = "R$4.500,00";
+    }
+    elseif ($transporte== "Navio" && $diarias== "Um") {
+      $total = "R$3.500,00";
+    }
+
+  if ($transporte== "Onibus" && $diarias== "Tres") {
+    $total = "R$3.500,00";
+  }
+    elseif ($transporte== "Onibus" && $diarias== "Dois") {
+      $total = "R$2.500,00";
+    }
+    elseif ($transporte== "Onibus" && $diarias== "Um") {
+      $total = "R$500,00";
+    }
+}
 
 ?>
 
 <div class="container">
   <div class="resumo-layout">
-    <h1>Viagem cadastrada com sucesso!</h1>
-    <h3>Resumo da Viagem</h3>
+    <h1>Resumo da Viagem</h1>
     <hr><br>
-    <img class="mb-5" src="http://via.placeholder.com/150x150" alt="foto-perfil">
     <p>Destino: <?= $destino ?></p><br>
     <p>Transporte: <?= $transporte ?></p><br>
     <p>Hotel: <?= $hotel ?> Estrela(s)</p><br>
-    <p><?= $diarias ?> Diaria(s)</p><br>
+    <p>Diaria(s): <?= $diarias ?></p><br>
     <p>Translado: <?= $translado ?></p><br>
     <p>Total: <?= $total ?></p><br>
     <p>Passeio: <?= $passeio ?></p>
   </div>
-
+  <a href="perfil.php" class="btn btn-primary">Voltar</a>
 </div>
 
 
