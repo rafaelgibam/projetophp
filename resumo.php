@@ -10,66 +10,151 @@ $hotel = $_POST['hotel'];
 $total = (isset($_POST['total'])) ? $_POST['total'] : null;
 $passeio = $_POST['passeio'];
 
-if($destino === "Recife"){
-    if($transporte==="Avião" && $diarias==="tres"){
+if($destino == "Recife"){
+    if($transporte== "Aviao" && $diarias== "Tres"){
         $total = "R$3.000,00";
     }
-    elseif ($transporte==="Navio" && $diarias==="tres") {
-      $total = "R$4.000,00";
+    elseif ($transporte== "Aviao" && $diarias== "Dois") {
+      $total = "R$2.500,00";
     }
-    elseif ($transporte ==="Ônibus" && $diarias==="tres") {
+    elseif ($transporte== "Aviao" && $diarias== "Um") {
       $total = "R$1.500,00";
     }
 
-}
-elseif ($destino === "Natal") {
-  if($transporte==="Avião" && $diarias==="tres"){
-      $total = "R$2.000,00";
-  }
-  elseif ($transporte==="Navio" && $diarias==="tres") {
-    $total = "R$6.000,00";
-  }
-  elseif ($transporte==="Ônibus" && $diarias==="tres") {
-    $total = "R$3.500,00";
-  }
-}
-elseif ($destino === "Porto de Galinhas") {
-  if($transporte==="Avião" && $diarias==="tres"){
-      $total = "R$3.000,00";
-  }
-  elseif ($transporte==="Navio" && $diarias==="tres") {
-    $total = "R$7.000,00";
-  }
-  elseif ($transporte==="Ônibus" && $diarias==="tres") {
-    $total = "R$1.000,00";
-  }
-}
-elseif ($destino === "João Pessoa") {
-  if($transporte==="Avião" && $diarias==="tres"){
+    if ($transporte== "Navio" && $diarias== "Tres") {
       $total = "R$4.000,00";
-  }
-  elseif ($transporte==="Navio" && $diarias==="tres") {
-    $total = "R$5.500,00";
-  }
-  elseif ($transporte==="Ônibus" && $diarias==="tres") {
-    $total = "R$1.700,00";
-  }
+    }
+    elseif ($transporte== "Navio" && $diarias== "Dois") {
+      $total = "R$3.500,00";
+    }
+    elseif ($transporte== "Navio" && $diarias== "Um") {
+      $total = "R$2.500,00";
+    }
+
+    if ($transporte== "Onibus" && $diarias== "Tres") {
+      $total = "R$1.500,00";
+    }elseif ($transporte== "Onibus" && $diarias== "Dois") {
+      $total = "R$3.500,00";
+    }
+    elseif ($transporte== "Onibus" && $diarias== "Um") {
+      $total = "R$2.500,00";
+    }
+
 }
 
-if ($destino == 0){
+elseif ($destino == "Natal") {
+    if($transporte== "Aviao" && $diarias== "Tres"){
+        $total = "R$3.000,00";
+    }
+      elseif ($transporte== "Aviao" && $diarias== "Dois") {
+        $total = "R$2.500,00";
+      }
+      elseif ($transporte== "Aviao" && $diarias== "Um") {
+        $total = "R$800,00";
+      }
+
+    if ($transporte== "Navio" && $diarias== "Tres") {
+      $total = "R$6.000,00";
+    }
+      elseif ($transporte== "Navio" && $diarias== "Dois") {
+        $total = "R$4.500,00";
+      }
+      elseif ($transporte== "Navio" && $diarias== "Um") {
+        $total = "R$3.500,00";
+      }
+
+    if ($transporte== "Onibus" && $diarias== "Tres") {
+      $total = "R$3.500,00";
+    }
+      elseif ($transporte== "Onibus" && $diarias== "Dois") {
+        $total = "R$2.500,00";
+      }
+      elseif ($transporte== "Onibus" && $diarias== "Um") {
+        $total = "R$500,00";
+      }
+
+
+}
+elseif ($destino == "Sirinhaem") {
+    if($transporte== "Aviao" && $diarias== "Tres"){
+        $total = "R$1.000,00";
+    }
+      elseif ($transporte== "Aviao" && $diarias== "Dois") {
+        $total = "R$700,00";
+      }
+      elseif ($transporte== "Aviao" && $diarias== "Um") {
+        $total = "R$500,00";
+      }
+
+    if ($transporte== "Navio" && $diarias== "Tres") {
+      $total = "R$2.000,00";
+    }
+      elseif ($transporte== "Navio" && $diarias== "Dois") {
+        $total = "R$1.500,00";
+      }
+      elseif ($transporte== "Navio" && $diarias== "Um") {
+        $total = "R$500,00";
+      }
+
+
+  if ($transporte== "Onibus" && $diarias=="Tres") {
+    $total = "R$800,00";
+  }
+    elseif ($transporte== "Onibus" && $diarias== "Dois") {
+      $total = "R$500,00";
+    }
+    elseif ($transporte== "Onibus" && $diarias== "Um") {
+      $total = "R$350,00";
+    }
+
+}
+
+elseif ($destino == "Porto") {
+  if($transporte== "Aviao" && $diarias== "Tres"){
+      $total = "R$4.000,00";
+  }
+    elseif ($transporte== "Aviao" && $diarias== "Dois") {
+      $total = "R$3.500,00";
+    }
+    elseif ($transporte== "Aviao" && $diarias== "Um") {
+      $total = "R$2.500,00";
+    }
+
+
+  if ($transporte== "Navio" && $diarias== "Tres") {
+    $total = "R$6.000,00";
+  }
+    elseif ($transporte== "Navio" && $diarias== "Dois") {
+      $total = "R$4.500,00";
+    }
+    elseif ($transporte== "Navio" && $diarias== "Um") {
+      $total = "R$3.500,00";
+    }
+
+  if ($transporte== "Onibus" && $diarias== "Tres") {
+    $total = "R$3.500,00";
+  }
+    elseif ($transporte== "Onibus" && $diarias== "Dois") {
+      $total = "R$2.500,00";
+    }
+    elseif ($transporte== "Onibus" && $diarias== "Um") {
+      $total = "R$500,00";
+    }
+}
+
+if ($destino == "Recife"){
 	$img =	 "uploads/recife.jpg";
 	}
-  elseif ($destino == 1) {
+  elseif ($destino == "Natal") {
 	$img =	 "uploads/natal.jpg";
   }
-  elseif ($destino == 2) {
+  elseif ($destino == "Sirinhaem") {
 	$img =	 "uploads/porto.jpg";
   }
-  elseif ($destino ==3) {
+  elseif ($destino == "Porto") {
     $img = "uploads/sirinha.jpg";
   }
 
-print_r($_POST);
 
 ?>
 
