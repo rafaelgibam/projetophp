@@ -69,8 +69,6 @@ if ($destino == 0){
     $img = "uploads/sirinha.jpg";
   }
 
-print_r($_POST);
-
 ?>
 
 <div class="container">
@@ -86,7 +84,7 @@ print_r($_POST);
     <p>Total: <?= $total ?></p><br>
     <p>Passeio: <?= $passeio ?></p>
   </div>
-
+  <a href="perfil.php"></a>
 </div>
 
 
