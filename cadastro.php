@@ -62,7 +62,7 @@ if (isset ($_FILES['foto']))
         </div>
 
         <div class="form-row">
-          <input type="submit" value="Cadastrar" class="btn btn-primary mr-2">
+          <input type="submit" name="cadastrar" value="Cadastrar" class="btn btn-primary mr-2">
           <a href="index.php" class="btn btn-danger">Voltar</a>
         </div>
     </form>

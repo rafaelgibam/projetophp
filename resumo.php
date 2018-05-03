@@ -16,7 +16,7 @@ if($destino === "Recife"){
     elseif ($transporte==="Navio" && $diarias==="tres") {
       $total = "R$4.000,00";
     }
-    elseif ($transporte==="Ônibus" && $diarias==="tres") {
+    elseif ($transporte ==="Ônibus" && $diarias==="tres") {
       $total = "R$1.500,00";
     }
 

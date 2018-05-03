@@ -1,14 +1,35 @@
 <?php require_once 'layouts/header.php';
 
-$login = $_POST['login'];
-$senha = $_POST['senha'];
-$nome = $_POST['nome'];
-$sobrenome = $_POST['sobrenome'];
-$fone = $_POST['fone'];
-$rg = $_POST['rg'];
-$cpf = $_POST['cpf'];
+if(isset($_POST['cadastrar']))
+{
+	$login = $_POST['login'];
+	$senha = $_POST['senha'];
+	$nome = $_POST['nome'];
+	$sobrenome = $_POST['sobrenome'];
+	$fone = $_POST['fone'];
+	$rg = $_POST['rg'];
+	$cpf = $_POST['cpf'];
+}
 
-if (isset ($_FILES['foto']))
+$dir = "assets/uploadstxt";
+$arquivo = $dir . "/usuarios.txt";
+
+$linha = file_get_contents($arquivo);
+
+$user = explode(';',$linha);
+
+if($_POST['login'] == "admin" || $_POST['senha'] == "123" && $_POST == 'login')
+{
+	$login = $user[0];
+	$senha = $user[1];
+	$nome = $user[2];
+	$sobrenome = $user[3];
+	$fone = $user[4];
+	$rg = $user[5];
+	$cpf = $user[6];
+}
+
+if(isset ($_FILES['foto']))
 	{
 	$ext = strtolower(substr($_FILES['foto'] ['name'], -4));
 	$dir = 'uploads/';
@@ -21,7 +42,7 @@ if (isset ($_FILES['foto']))
     <form class="form-perfil mt-5 mb-5" action="resumo.php" method="post">
       <div class="form-row">
         <div class="form-group col-2">
-          <img src="<?php echo $dir . $_POST["nome"] . $ext; ?>" alt="" class="img-thumbnail">
+          <img src="<?php echo $dir . $_POST["nome"] . "001" . $ext; ?>" alt="" class="img-thumbnail">
         </div>
 
         <div class="form-group col-2">
@@ -81,8 +102,8 @@ if (isset ($_FILES['foto']))
             <<option value="Navio">Navio</option>
             <<option value="Avião">Avião</option>
             <<option value="Ônibus">Ônibus</option>
-
           </select>
+
         </div>
 
         <div class="form-group col-4">

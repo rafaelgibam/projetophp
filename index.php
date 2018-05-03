@@ -5,28 +5,17 @@ $senha = (isset($_POST['senha'])) ? $_POST['senha'] : null;
 
 $dir = "assets/uploadstxt";
 $arquivo = $dir . "/usuarios.txt";
-$ponteiro = fopen($arquivo, "r");
 
-$logintxt;
-$senhatxt;
+$linha = file_get_contents($arquivo);
 
-while (!feof($ponteiro)){
-  $linha = fgets($ponteiro, 4096);
-  if (strpos($linha, 'LOGIN@')) {
-    $logintxt = explode("@", $linha);
-  }
-  if(strpos($linha, 'SENHA@')){
-    $senhatxt = explode("@", $linha);
-  }
-}
+$user = explode(';', $linha);
 
-fclose($ponteiro);
-
-if($login == $senhatxt[1] || $senha == $senhatxt[3]){
+if($login === $user[0] || $senha === $user[1]){
   echo '<center>' . '<img src="assets/img/loading.gif" alt="loadgif">' . '</center>';
   header("location: perfil.php");
 }else if(isset($login) && isset($senha)){
   echo "Login e Senha Incorretos!";
+  print_r($user);
 }
 
 ?>
@@ -46,7 +35,7 @@ if($login == $senhatxt[1] || $senha == $senhatxt[3]){
           <input type="password" class="form-control" id="senha" name="senha" placeholder="Entre com sua senha">
         </div>
 
-        <button type="submit" class="btn btn-primary">Entrar</button>
+        <button type="submit" name="login" class="btn btn-primary">Entrar</button>
         <a href="cadastro.php" class="btn btn-danger">Cadastra-se</a>
       </form>
     </div>
