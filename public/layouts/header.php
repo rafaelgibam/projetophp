@@ -1,4 +1,5 @@
-<?php require_once 'lib/futil.php'; ?>
+<?php require_once 'lib/funtil.php'; ?>
+<?php require_once __DIR__ . "/../../autoload.php"; ?>
 <!doctype html>
 <html lang="pt-br">
   <head>

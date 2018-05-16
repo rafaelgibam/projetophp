@@ -1,6 +1,6 @@
 <?php
 
-namespace Model;
+namespace models;
 
 abstract class Model
 {
@@ -11,14 +11,14 @@ abstract class Model
         return $conn->prepare($sql);
     }
 
-    public function buscarPorId($id){
+    public function selectId($id){
         $stmt = $this->prepare("SELECT * FROM {$this->table} WHERE id = :ID");
         $stmt->bindParam(":ID", $id);
         $stmt->fetch();
         $stmt->closeCursor();
     }
 
-    public function buscarTodos(){
+    public function select(){
         $stmt = $this->prepare("SELECT * FROM {$this->table}");
         $stmt->fetchAll();
         $stmt->closeCursor();
