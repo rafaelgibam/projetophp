@@ -2,7 +2,7 @@
 
 namespace Model;
 
-class Usuario extends Model
+class Viagem extends Model
 {
 
 }
