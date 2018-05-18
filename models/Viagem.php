@@ -2,48 +2,53 @@
 
 namespace models;
 
-class Viagem extends Model implements Icrud 
+class Viagem extends Model implements ICrud 
 {
 
-
    protected $table = "viagem";
-  
-   private $id, $destino, $preco, $transporte, $nivel_hotel, $translado, $descricao_viagem, $diarias, $usuario_viagem, $preco_total;
-    
 
+   private $id;
+   private $destino;
+   private $preco;
+   private $transporte;
+   private $nivelhotel;
+   private $translado;
+   private $descricao;
+   private $diarias;
+   private $tipo;
+   private $usuarioid; // Objeto de Usuario
 
    public function insert()
     {
-       $stmt = $this->prepare("INSERT INTO $this->table VALUES (:ID, :DESTINO, :PRECO, :TRANSPORTE, :NIVEL_HOTEL, :TRANSLADO, 															 :DESCRICAO_VIAGEM, :DIARIAS, :USUARIO_VIAGEM, :PRECO_TOTAL)");
+       $stmt = $this->prepare("INSERT INTO $this->table (DESTINO, PRECO, TRANSPORTE, NIVEL_HOTEL, TRANSLADO, DESCRICAO_VIAGEM, USUARIO_VIAGEM, TP_VIAGEM) VALUES (:DESTINO, :PRECO, :TRANSPORTE, :NIVELHOTEL, :TRANSLADO, :DESCRICAO, :DIARIAS, :USUARIOID, :TPVIAGEM));													 :DESCRICAO_VIAGEM, :DIARIAS, :USUARIO_VIAGEM, :PRECO_TOTAL)");
       
-       $stmt->bindParam(":LOGIN", $this->id);
-       $stmt->bindParam(":SENHA", $this->destino);
-       $stmt->bindParam(":NOME", $this->preco);
-       $stmt->bindParam(":TEL", $this->transporte);
-       $stmt->bindParam(":EMAIL", $this->nivel_hotel);
-       $stmt->bindParam(":RG", $this->translado);
-       $stmt->bindParam(":CPF", $this->descricao_viagem);
-       $stmt->bindParam(":DATANASC", $this->diarias);
-       $stmt->bindParam(":TIPOUSUARIO", $this->usuario_viagem);
-       $stmt->bindParam(":ENDERECO", $this->preco_total);
-       $stmt->fetch();
+       $stmt->bindParam(":DESTINO", $this->destino);
+       $stmt->bindParam(":PRECO", $this->preco);
+       $stmt->bindParam(":TRANSPORTE", $this->transporte);
+       $stmt->bindParam(":NIVELHOTEL", $this->nivelhotel);
+       $stmt->bindParam(":TRANSLADO", $this->translado);
+       $stmt->bindParam(":DESCRICAO", $this->descricao);
+       $stmt->bindParam(":DIARIAS", $this->diarias);
+       $stmt->bindParam(":TPVIAGEM", $this->tipo);
+       $stmt->bindParam(":USUARIOID", $this->usuarioid);
+       $stmt->execute();
        $stmt->closeCursor();
     }
 
     public function delete($id)
     {
         $stmt = $this->prepare("DELETE FROM $this->table WHERE id = :ID");
-        $stmt->bindParam(":ID", $this->id);
-        $stmt->fetch();
+        $stmt->bindParam(":ID", $id);
+        $stmt->execute();
         $stmt->closeCursor();
     }
 
     public function update($id)
     {
-        $stmt = $this->prepare("UPDATE $this->table SET destino = :DESTINO, preco = :PRECO, transporte = :TRANSPORTE, nivel_hotel = :NIVEL_HOTEL, translado = :TRANSLADO,
-                                    descricao_viagem = :DESCRICAO_VIAGEM , diarias = :DIARIAS, usuario_viagem = :USUARIO_VIAGEM, preco_total = :PRECO_TOTAL 
-                                    	WHERE id = :ID)");
-        $stmt->bindParam(":ID", $this->id);
+        $stmt = $this->prepare("UPDATE $this->table SET DESTINO = :DESTINO, PRECO = :PRECO, TRANSPORTE = :TRANSPORTE, NIVEL_HOTEL = :NIVEL_HOTEL, TRANSLADO = :TRANSLADO,
+                                     DESCRICAO_VIAGEM = :DESCRICAO_VIAGEM , DIARIA = :DIARIAS, USUARIO_VIAGEM = :USUARIO_VIAGEM
+                                     WHERE id = :ID)");
+        $stmt->bindParam(":ID", $id);
         $stmt->bindParam(":DESTINO", $this->login);
         $stmt->bindParam(":PRECO", $this->senha);
         $stmt->bindParam(":TRANSPORTE", $this->nome);
@@ -53,12 +58,11 @@ class Viagem extends Model implements Icrud
         $stmt->bindParam(":DIARIAS", $this->cpf);
         $stmt->bindParam(":USUARIO_VIAGEM", $this->datanasc);
         $stmt->bindParam(":PRECO_TOTAL", $this->tipousuario);
-        $stmt->fetch();
+        $stmt->execute();
         $stmt->closeCursor();
     }
 
-   
- /**
+    /**
      * @return mixed
      */
     public function getId()
@@ -83,7 +87,7 @@ class Viagem extends Model implements Icrud
     }
 
     /**
-     * @param mixed $login
+     * @param mixed $destino
      */
     public function setDestino($destino)
     {
@@ -99,7 +103,7 @@ class Viagem extends Model implements Icrud
     }
 
     /**
-     * @param mixed $senha
+     * @param mixed $preco
      */
     public function setPreco($preco)
     {
@@ -115,30 +119,30 @@ class Viagem extends Model implements Icrud
     }
 
     /**
-     * @param mixed $criadoem
+     * @param mixed $transporte
      */
     public function setTransporte($transporte)
     {
         $this->transporte = $transporte;
     }
 
- /**
+    /**
      * @return mixed
      */
-    public function getNivel_Hotel()
+    public function getNivelhotel()
     {
-        return $this->nivel_hotel;
+        return $this->nivelhotel;
     }
 
     /**
-     * @param mixed $id
+     * @param mixed $nivelhotel
      */
-    public function setNivel_Hotel($nivel_hotel)
+    public function setNivelhotel($nivelhotel)
     {
-        $this->nivel_hotel = $nivel_hotel;
+        $this->nivelhotel = $nivelhotel;
     }
 
-	/**
+    /**
      * @return mixed
      */
     public function getTranslado()
@@ -147,7 +151,7 @@ class Viagem extends Model implements Icrud
     }
 
     /**
-     * @param mixed $login
+     * @param mixed $translado
      */
     public function setTranslado($translado)
     {
@@ -157,20 +161,20 @@ class Viagem extends Model implements Icrud
     /**
      * @return mixed
      */
-    public function getDescricao_Viagem()
+    public function getDescricao()
     {
-        return $this->descricao_viagem;
+        return $this->descricao;
     }
 
     /**
-     * @param mixed $senha
+     * @param mixed $descricao
      */
-    public function setDescricao_Viagem($descricao_viagem)
+    public function setDescricao($descricao)
     {
-        $this->descricao_viagem = $descricao_viagem;
+        $this->descricao = $descricao;
     }
 
-	/**
+    /**
      * @return mixed
      */
     public function getDiarias()
@@ -179,46 +183,45 @@ class Viagem extends Model implements Icrud
     }
 
     /**
-     * @param mixed $criadoem
+     * @param mixed $diarias
      */
     public function setDiarias($diarias)
     {
         $this->diarias = $diarias;
     }
 
-	/**
+    /**
      * @return mixed
      */
-    public function getUsuario_Viagem()
+    public function getTipo()
     {
-        return $this->usuario_viagem;
+        return $this->tipo;
     }
 
     /**
-     * @param mixed $criadoem
+     * @param mixed $tipo
      */
-    public function setUsuario_Viagem($usuario_viagem)
+    public function setTipo($tipo)
     {
-        $this->usuario_viagem = $usuario_viagem;
-    }
-
-/**
-     * @return mixed
-     */
-    public function getPreco_Total()
-    {
-        return $this->preco_total;
+        $this->tipo = $tipo;
     }
 
     /**
-     * @param mixed $criadoem
+     * @return mixed
      */
-    public function setPreco_Total($preco_total)
+    public function getUsuarioid()
     {
-        $this->preco_total = $preco_total;
+        return $this->usuarioid;
     }
 
+    /**
+     * @param mixed $usuarioid
+     */
+    public function setUsuarioid($usuarioid)
+    {
+        $this->usuarioid = $usuarioid;
+    }
 
-?>
 
 }
+

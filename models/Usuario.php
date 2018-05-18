@@ -32,7 +32,7 @@ class Usuario extends Model implements ICrud
        $stmt->bindParam(":DATANASC", $this->datanasc);
        $stmt->bindParam(":TIPOUSUARIO", $this->tipousuario);
        $stmt->bindParam(":ENDERECO", $this->endereco);
-       $stmt->fetch();
+       $stmt->execute();
        $stmt->closeCursor();
     }
 
@@ -60,7 +60,7 @@ class Usuario extends Model implements ICrud
         $stmt->bindParam(":DATANASC", $this->datanasc);
         $stmt->bindParam(":TIPOUSUARIO", $this->tipousuario);
         $stmt->bindParam(":ENDERECO", $this->endereco);
-        $stmt->fetch();
+        $stmt->execute();
         $stmt->closeCursor();
     }
 
