@@ -2,16 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a746d547-d3a1-40ae-a3a0-c3b41d8de2b5" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/php.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/models/ICrud.php" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/lib/futil.php" afterPath="$PROJECT_DIR$/public/lib/funtil.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/controllers/UsuarioController.php" afterPath="$PROJECT_DIR$/controllers/UsuarioController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/models/DB.php" afterPath="$PROJECT_DIR$/models/DB.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/models/Model.php" afterPath="$PROJECT_DIR$/models/Model.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/models/Usuario.php" afterPath="$PROJECT_DIR$/models/Usuario.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/models/Viagem.php" afterPath="$PROJECT_DIR$/models/Viagem.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/layouts/header.php" afterPath="$PROJECT_DIR$/public/layouts/header.php" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -22,12 +13,12 @@
   </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
-    <leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file leaf-file-name="Viagem.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/models/Viagem.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="85">
-              <caret line="5" column="1" lean-forward="true" selection-start-line="5" selection-start-column="1" selection-end-line="5" selection-end-column="1" />
+              <caret line="5" column="1" lean-forward="false" selection-start-line="5" selection-start-column="1" selection-end-line="5" selection-end-column="1" />
               <folding />
             </state>
           </provider>
@@ -36,8 +27,8 @@
       <file leaf-file-name="Usuario.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/models/Usuario.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="706">
-              <caret line="60" column="61" lean-forward="true" selection-start-line="60" selection-start-column="61" selection-end-line="60" selection-end-column="61" />
+            <state relative-caret-position="493">
+              <caret line="88" column="5" lean-forward="true" selection-start-line="88" selection-start-column="5" selection-end-line="88" selection-end-column="5" />
               <folding>
                 <marker date="1526445898205" expanded="true" signature="624:636" ph="INSERT INTO ${$this}... " />
                 <marker date="1526445898205" expanded="true" signature="624:643" ph="INSERT INTO ${$this}... " />
@@ -77,7 +68,7 @@
         <entry file="file://$PROJECT_DIR$/models/Model.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="255">
-              <caret line="15" column="37" lean-forward="true" selection-start-line="15" selection-start-column="37" selection-end-line="15" selection-end-column="37" />
+              <caret line="15" column="37" lean-forward="false" selection-start-line="15" selection-start-column="37" selection-end-line="15" selection-end-column="37" />
               <folding>
                 <marker date="1526444008609" expanded="true" signature="248:262" ph="SELECT * FRO... $" />
                 <marker date="1526444008609" expanded="true" signature="248:276" ph="SELECT * FRO... " />
@@ -94,7 +85,7 @@
         <entry file="file://$PROJECT_DIR$/public/index.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="442">
-              <caret line="26" column="29" lean-forward="true" selection-start-line="26" selection-start-column="29" selection-end-line="26" selection-end-column="29" />
+              <caret line="26" column="29" lean-forward="false" selection-start-line="26" selection-start-column="29" selection-end-line="26" selection-end-column="29" />
               <folding />
             </state>
           </provider>
@@ -154,6 +145,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
@@ -229,11 +221,11 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="E:/Pizzaria" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -332,7 +324,8 @@
       <option name="presentableId" value="Default" />
       <updated>1526352323872</updated>
       <workItem from="1526352325437" duration="2036000" />
-      <workItem from="1526433010427" duration="11236000" />
+      <workItem from="1526433010427" duration="12006000" />
+      <workItem from="1526559128973" duration="535000" />
     </task>
     <task id="LOCAL-00001" summary="Refatorando o projeto para MVC">
       <created>1526355382317</created>
@@ -355,11 +348,18 @@
       <option name="project" value="LOCAL" />
       <updated>1526439171392</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Model usuario implementada com sucesso.">
+      <created>1526445946374</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1526445946374</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="13272000" />
+    <option name="totallyTimeSpent" value="14577000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1066" extended-state="6" />
@@ -394,13 +394,83 @@
     <MESSAGE value="Refatorando o projeto para MVC" />
     <MESSAGE value="Criando Usuario, UsuarioController" />
     <MESSAGE value="Criando classe Usuario" />
-    <option name="LAST_COMMIT_MESSAGE" value="Criando classe Usuario" />
+    <MESSAGE value="Model usuario implementada com sucesso." />
+    <option name="LAST_COMMIT_MESSAGE" value="Model usuario implementada com sucesso." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/models/Viagem.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="1" lean-forward="false" selection-start-line="5" selection-start-column="1" selection-end-line="5" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/models/Model.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="15" column="37" lean-forward="true" selection-start-line="15" selection-start-column="37" selection-end-line="15" selection-end-column="37" />
+          <folding>
+            <marker date="1526444008609" expanded="true" signature="248:262" ph="SELECT * FRO... $" />
+            <marker date="1526444008609" expanded="true" signature="248:276" ph="SELECT * FRO... " />
+            <marker date="1526444008609" expanded="true" signature="248:288" ph="SELECT * FRO... $" />
+            <marker date="1526444008609" expanded="true" signature="248:291" ph="SELECT * FRO... $" />
+            <marker date="1526444008609" expanded="true" signature="456:470" ph="SELECT * FRO... $" />
+            <marker date="1526444008609" expanded="true" signature="456:484" ph="SELECT * FRO... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="442">
+          <caret line="26" column="29" lean-forward="true" selection-start-line="26" selection-start-column="29" selection-end-line="26" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/models/Usuario.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1020">
+          <caret line="60" column="61" lean-forward="true" selection-start-line="60" selection-start-column="61" selection-end-line="60" selection-end-column="61" />
+          <folding>
+            <marker date="1526445898205" expanded="true" signature="624:636" ph="INSERT INTO ${$this}... " />
+            <marker date="1526445898205" expanded="true" signature="624:643" ph="INSERT INTO ${$this}... " />
+            <marker date="1526445898205" expanded="true" signature="624:740" ph="INSERT INTO ${$this-&gt;table}... " />
+            <marker date="1526445898205" expanded="true" signature="1371:1410" ph="DELETE FROM " />
+            <marker date="1526445898205" expanded="true" signature="1383:1410" ph="INSERT INTO ${$this-&gt;table}... " />
+            <marker date="1526445898205" expanded="true" signature="1589:1871" ph="UPDATE ${$th... " />
+            <marker date="1526445898205" expanded="true" signature="1595:1871" ph="INSERT INTO ${$this-&gt;table}... " />
+            <marker date="1526445898205" expanded="true" signature="2492:2524" ph="/** * @retur... " />
+            <marker date="1526445898205" expanded="true" signature="2596:2631" ph="/** * @param... " />
+            <marker date="1526445898205" expanded="true" signature="2705:2737" ph="/** * @retur... " />
+            <marker date="1526445898205" expanded="true" signature="2815:2853" ph="/** * @param... " />
+            <marker date="1526445898205" expanded="true" signature="2939:2971" ph="/** * @retur... " />
+            <marker date="1526445898205" expanded="true" signature="3049:3087" ph="/** * @param... " />
+            <marker date="1526445898205" expanded="true" signature="3173:3205" ph="/** * @retur... " />
+            <marker date="1526445898205" expanded="true" signature="3281:3318" ph="/** * @param... " />
+            <marker date="1526445898205" expanded="true" signature="3400:3432" ph="/** * @retur... " />
+            <marker date="1526445898205" expanded="true" signature="3516:3557" ph="/** * @param... " />
+            <marker date="1526445898205" expanded="true" signature="3655:3687" ph="/** * @retur... " />
+            <marker date="1526445898205" expanded="true" signature="3761:3797" ph="/** * @param... " />
+            <marker date="1526445898205" expanded="true" signature="3875:3907" ph="/** * @retur... " />
+            <marker date="1526445898205" expanded="true" signature="3985:4023" ph="/** * @param... " />
+            <marker date="1526445898205" expanded="true" signature="4109:4141" ph="/** * @retur... " />
+            <marker date="1526445898205" expanded="true" signature="4213:4248" ph="/** * @param... " />
+            <marker date="1526445898205" expanded="true" signature="4322:4354" ph="/** * @retur... " />
+            <marker date="1526445898205" expanded="true" signature="4428:4464" ph="/** * @param... " />
+            <marker date="1526445898205" expanded="true" signature="4542:4574" ph="/** * @retur... " />
+            <marker date="1526445898205" expanded="true" signature="4658:4699" ph="/** * @param... " />
+            <marker date="1526445898205" expanded="true" signature="4797:4829" ph="/** * @retur... " />
+            <marker date="1526445898205" expanded="true" signature="4919:4963" ph="/** * @param... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/autoload.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
@@ -428,7 +498,7 @@
     <entry file="file://$PROJECT_DIR$/models/Viagem.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
-          <caret line="5" column="1" lean-forward="true" selection-start-line="5" selection-start-column="1" selection-end-line="5" selection-end-column="1" />
+          <caret line="5" column="1" lean-forward="false" selection-start-line="5" selection-start-column="1" selection-end-line="5" selection-end-column="1" />
           <folding />
         </state>
       </provider>
@@ -441,18 +511,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/models/EnumUsuario.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="9" column="0" lean-forward="true" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/models/EnumUsuario.php" />
     <entry file="file://$PROJECT_DIR$/public/index.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="442">
-          <caret line="26" column="29" lean-forward="true" selection-start-line="26" selection-start-column="29" selection-end-line="26" selection-end-column="29" />
+          <caret line="26" column="29" lean-forward="false" selection-start-line="26" selection-start-column="29" selection-end-line="26" selection-end-column="29" />
           <folding />
         </state>
       </provider>
@@ -460,7 +523,7 @@
     <entry file="file://$PROJECT_DIR$/models/Model.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
-          <caret line="15" column="37" lean-forward="true" selection-start-line="15" selection-start-column="37" selection-end-line="15" selection-end-column="37" />
+          <caret line="15" column="37" lean-forward="false" selection-start-line="15" selection-start-column="37" selection-end-line="15" selection-end-column="37" />
           <folding>
             <marker date="1526444008609" expanded="true" signature="248:262" ph="SELECT * FRO... $" />
             <marker date="1526444008609" expanded="true" signature="248:276" ph="SELECT * FRO... " />
@@ -482,8 +545,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/models/Usuario.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="706">
-          <caret line="60" column="61" lean-forward="true" selection-start-line="60" selection-start-column="61" selection-end-line="60" selection-end-column="61" />
+        <state relative-caret-position="493">
+          <caret line="88" column="5" lean-forward="true" selection-start-line="88" selection-start-column="5" selection-end-line="88" selection-end-column="5" />
           <folding>
             <marker date="1526445898205" expanded="true" signature="624:636" ph="INSERT INTO ${$this}... " />
             <marker date="1526445898205" expanded="true" signature="624:643" ph="INSERT INTO ${$this}... " />
