@@ -1,10 +1,15 @@
+
+<?php require_once "layouts/header.php"; ?>
+
 <?php
+
+$v = new \models\Viagem();
+
 
 $login = (isset($_POST['login'])) ? $_POST['login'] : null;
 $senha = (isset($_POST['senha'])) ? $_POST['senha'] : null;
 
 ?>
-<?php require_once "layouts/header.php"; ?>
 
 <div class="container">
   <div class="row">
@@ -27,5 +32,6 @@ $senha = (isset($_POST['senha'])) ? $_POST['senha'] : null;
     <div class="col-md-3"></div>
   </div>
 </div>
+
 
 <?php require_once "layouts/footer.php"; ?>

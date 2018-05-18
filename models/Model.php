@@ -14,13 +14,15 @@ abstract class Model
     public function selectId($id){
         $stmt = $this->prepare("SELECT * FROM {$this->table} WHERE id = :ID");
         $stmt->bindParam(":ID", $id);
-        $stmt->fetch();
-        $stmt->closeCursor();
+        $stmt->execute();
+
+        return $stmt->fetch();
     }
 
     public function select(){
         $stmt = $this->prepare("SELECT * FROM {$this->table}");
-        $stmt->fetchAll();
-        $stmt->closeCursor();
+        $stmt->execute();
+
+        return $stmt->fetchAll();
     }
 }
