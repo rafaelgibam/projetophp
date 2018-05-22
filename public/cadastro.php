@@ -6,41 +6,85 @@ if (isset ($_FILES['foto']))
 	$dir = 'uploads/';
 		move_uploaded_file ($_FILES['foto'] ['tmp_name'], $dir . $_POST['nome'] . '001' . $ext);
 	}
+
+	$usuario = new \models\Usuario();
+    $usuario->setLogin(isset($_POST['login']) ? $_POST['login'] : null );
+    $usuario->setSenha(isset($_POST['senha']) ? $_POST['senha'] : null);
+    $usuario->setDatanasc(isset($_POST['nascimento']) ? $_POST['nascimento'] : null);
+    $usuario->setNome(isset($_POST['nome']) ? $_POST['nome'] : null );
+    $usuario->setTel(isset($_POST['tel'])) ? $_POST['tel'] : null;
+    $usuario->setLogradouro(isset($_POST['logradouro']) ? $_POST['logradouro'] : null);
+    $usuario->setCidade(isset($_POST['cidade']) ? $_POST['cidade'] : null);
+    $usuario->setUf(isset($_POST['uf']) ? $_POST['uf'] : null);
+    $usuario->setNumerocasa(isset($_POST['numerocasa']) ? $_POST['numerocasa'] : null);
+    $usuario->setRg(isset($_POST['rg']) ? $_POST['rg'] : null );
+    $usuario->setCpf(isset($_POST['cpf']) ? $_POST['cpf'] : null);
+    $usuario->setTipousuario(isset($_POST['tipo']) ? $_POST['tipo'] : null);
+
+    if(isset($_POST['cadastrar']) && count($usuario) > 0){
+        $usuario->insert();
+        unset($_POST['cadastrar']);
+        header("location: index.php");
+    }
+
 ?>
 
 <div class="container">
-    <form class="form-cadastro" action="perfil.php" method="post" enctype="multipart/form-data">
+    <form class="form-cadastro" method="post" enctype="multipart/form-data">
+        <input type="number" name="tipo" value="1" hidden>
+
         <div class="form-row">
-          <div class="form-group col-6">
+          <div class="form-group col-5">
             <label for="login">Login</label>
             <input type="text" id="login" name="login" class="form-control">
           </div>
 
-          <div class="form-group col-6">
+          <div class="form-group col-4">
             <label for="senha">Senha</label>
             <input type="password" id="senha" name="senha" class="form-control">
           </div>
+
+            <div class="form-group col-3">
+                <label for="nascimento">Nascimento</label>
+                <input type="date" id="nascimento" name="nascimento" class="form-control">
+            </div>
         </div>
 
         <div class="form-row">
-          <div class="form-group col-2">
+          <div class="form-group col-9">
             <label for="nome">Nome</label>
             <input type="text" id="nome" name="nome" class="form-control">
           </div>
-
-          <div class="form-group col-2">
-            <label for="sobrenome">Sobrenome</label>
-            <input type="text" id="sobrenome" name="sobrenome" class="form-control">
-          </div>
-          <div class="form-group col-2">
-            <label for="fone">Fone</label>
-            <input type="text" id="fone" name="fone" class="form-control">
+          <div class="form-group col-3">
+            <label for="tel">Telefone</label>
+            <input type="text" id="tel" name="tel" class="form-control">
           </div>
 
-          <div class="form-group col-6">
-            <label for="endereco">Endereço</label>
-            <input type="text" id="endereco" name="endereco" class="form-control">
-          </div>
+
+
+        </div>
+
+        <div class="form-row">
+
+            <div class="form-group col-6">
+                <label for="logradouro">Logradouro</label>
+                <input type="text" id="logradouro" name="logradouro" class="form-control">
+            </div>
+
+            <div class="form-group col-2">
+                <label for="cidade">Cidade</label>
+                <input type="text" id="cidade" name="cidade" class="form-control">
+            </div>
+
+            <div class="form-group col-2">
+                <label for="uf">UF</label>
+                <input type="text" id="uf" name="uf" class="form-control">
+            </div>
+
+            <div class="form-group col-2">
+                <label for="numerocasa">Número</label>
+                <input type="text" id="numerocasa" name="numerocasa" class="form-control">
+            </div>
 
         </div>
 
