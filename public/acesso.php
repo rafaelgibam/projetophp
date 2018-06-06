@@ -1,23 +1,30 @@
 <?php
+session_start();
 
-if($_POST == "acessar") {
+require_once __DIR__ . "/../autoload.php";
 
-    session_start();
+if(isset($_POST['acessar'])) {
 
     $usuario = new \models\Usuario();
-
-    $usuario->setLogin((isset($_POST['login'])) ? $_POST['login'] : null);
-    $usuario->setSenha((isset($_POST['senha'])) ? $_POST['senha'] : null);
-
+    $login = "";
+    $senha = "";
     foreach ($usuario->select() as $u) {
-        if ($usuario->getLogin() == $u->LOGIN || $usuario->getSenha() == $u->SENHA) {
-            $_SESSION["login"] = $u->LOGIN;
-            $_SESSION["senha"] = $u->SENHA;
 
-            header("location: perfil.php");
+        if($_POST['login'] == $u->LOGIN  && md5($_POST['senha']) == $u->SENHA){
+            $login = $u->LOGIN;
+            $senha = $u->SENHA;
+             $_SESSION["login"] = $u->LOGIN;
+             $_SESSION["senha"] = $u->SENHA;
+             $_SESSION["id"] = $u->ID;
+             header("location: usuario/perfil.php");
         }
+        
     }
 
-    echo "ACESSO!";
+     if($_POST['login'] != $login || md5($_POST['senha']) != $senha){
+             header("location: index.php?msg=errologin");
+    }
 }
+
+
 

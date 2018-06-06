@@ -73,7 +73,7 @@
           <textarea class="form-control" name="passeio" id="passeio" rows="12" cols="80" placeholder="Digite sobre seu passeio"></textarea>
         </div>
       </div>
-      <input class="btn btn-primary mr-3" type="submit" value="Confirmar"><a href="perfil.php" class="btn btn-danger">Voltar</a>
+      <input class="btn btn-primary mr-3" type="submit" value="Confirmar"><a href="../usuario/perfil.php" class="btn btn-danger">Voltar</a>
     </form>
 
 </div>

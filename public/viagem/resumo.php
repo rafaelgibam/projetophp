@@ -170,7 +170,7 @@ if ($destino == "Recife"){
     <p>Total: <?= $total ?></p><br>
     <p>Passeio: <?= $passeio ?></p>
   </div>
-  <a href="perfil.php"></a>
+  <a href="../usuario/perfil.php"></a>
 </div>
 
 

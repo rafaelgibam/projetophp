@@ -1,96 +1,74 @@
-<?php require_once 'layouts/header.php';
+<?php require_once __DIR__ . '/../layouts/header.php';
+
 session_start();
 
-$dirtxt = "assets/uploadstxt";
-$dir = "uploads/";
-$arquivo = $dirtxt . "/usuarios.txt";
+$u = new \models\Usuario();
 
-$linha = file_get_contents($arquivo);
-
-$user = explode(';', $linha);
-
-if(isset($_POST['cadastrar']))
-{
-	$login = $_POST['login'];
-	$senha = $_POST['senha'];
-	$nome = $_POST['nome'];
-	$sobrenome = $_POST['sobrenome'];
-	$fone = $_POST['fone'];
-	$rg = $_POST['rg'];
-	$cpf = $_POST['cpf'];
-
-}else if(isset($_POST['login']) || $login === $user[0] || $senha === $user[1]){
-	$login = $user[0];
-	$senha = $user[1];
-	$nome = $user[2];
-	$sobrenome = $user[3];
-	$fone = $user[4];
-	$rg = $user[5];
-	$cpf = $user[6];
-}else{
-	echo "Login e Senha Incorretos!";
-  header("location: index.php");
+if(!isset($_SESSION['login']) && !isset($_SESSION['senha'])){
+    session_destroy();
+    header("location: /");
 }
 
-if(isset($_FILES['foto']) || isset($_POST['cadastrar']))
-	{
-		$ext = strtolower(substr($_FILES['foto']['name'], -4));
-		$dir = 'uploads/';
-		move_uploaded_file( $_FILES['foto']['tmp_name'], $dir . $_POST['nome'] . '001' . $ext );
-	}
+if(isset($_GET['action']) && $_GET['action'] == "sair"){
+    session_destroy();
+    header("location: /");
+}
+   
+if(isset($_GET['action']) && $_GET['action'] == "lista"){
+    session_destroy();
+    header("location: listausuarios.php");
+}
 
-	$linhas = explode("@", file_get_contents('destino.txt'));
+$usu = $u->selectId($_SESSION['id']);
 
-	$transportes = explode("@", file_get_contents('transporte.txt'));
-
-	$diarias = explode("@", file_get_contents('diarias.txt'));
-
-if(isset($_SESSION)) {
-
-    ?>
-
+?>
     <div class="container">
-        <form class="form-perfil mt-5 mb-5" action="resumo.php" method="post">
+        <form class="form-perfil mt-5 mb-5" action="../viagem/resumo.php" method="post">
             <div class="form-row">
                 <div class="form-group col-2">
-                    <img src="<?php echo $dir . $nome . "001.jpg"; ?>" alt="" class="img-thumbnail">
+                    <label for="tipo">Tipo Usuário:</label>
+                    <input type="text" class="form-control" disabled value="<?= ($usu->NIVEL_USER == 1) ? "ADMINISTRADOR" : "OPERACIONAL" ?>">
                 </div>
 
                 <div class="form-group col-2">
                     <label for="nome">Nome: </label>
-                    <input type="text" id="nome" name="nome" class="form-control" value="<?= $nome ?>">
-                </div>
-
-                <div class="form-group col-2">
-                    <label for="sobrenome">Sobrenome: </label>
-                    <input type="text" id="sobrenome" name="sobrenome" class="form-control" value="<?= $sobrenome ?>">
+                    <input type="text" id="nome" name="nome" class="form-control" value="<?= $usu->NM_USUARIO ?>">
                 </div>
 
                 <div class="form-group col-2">
                     <label for="fone">Fone: </label>
-                    <input type="text" id="fone" name="fone" class="form-control" value="<?= $fone ?>">
+                    <input type="text" id="fone" name="fone" class="form-control" value="<?= $usu->TELEFONE ?>">
                 </div>
 
                 <div class="form-group col-2">
                     <label for="rg">RG: </label>
-                    <input type="text" id="rg" name="rg" class="form-control" value="<?= $rg ?>">
+                    <input type="text" id="rg" name="rg" class="form-control" value="<?= $usu->RG ?>">
                 </div>
 
                 <div class="form-group col-2">
                     <label for="cpf">CPF: </label>
-                    <input type="text" id="cpf" name="cpf" class="form-control" value="<?= $cpf ?>">
+                    <input type="text" id="cpf" name="cpf" class="form-control" value="<?= $usu->CPF ?>">
                 </div>
             </div>
 
             <div class="form-row">
                 <div class="form-group col-6">
                     <label for="login">Login: </label>
-                    <input type="text" id="login" name="login" class="form-control" value="<?= $login ?>">
+                    <input type="text" id="login" name="login" class="form-control" value="<?= $_SESSION['login'] ?>">
                 </div>
 
                 <div class="form-group col-6">
                     <label for="senha">Senha: </label>
-                    <input type="text" id="senha" name="senha" class="form-control" value="<?= $senha ?>">
+                    <input type="password" id="senha" name="senha" class="form-control" value="<?= $_SESSION['senha'] ?>">
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group col-12">
+                    <a href="?action=sair" class="btn btn-primary btn-block">Sair</a></br>
+                    
+                    <a href="?action=lista" class="btn btn-danger btn-block">Lista de Usuarios</a>
+                    
                 </div>
             </div>
             <h2 class="mt-5">Opções de Viagens</h2>
@@ -101,11 +79,9 @@ if(isset($_SESSION)) {
                 <div class="form-group col-4">
                     <label for="destino">Destino:</label>
                     <select class="custom-select" name="estado">
-
-                        <?php foreach ($linhas as $key => $value): ?>
-                            <option value= <?php echo $value; ?>><?php echo $value; ?></option>
-                        <?php endforeach; ?>
-                        }
+                        <option value="timbauba">Timbaúba</option>
+                        <option value="recife">Recife</option>
+                        <option value="Fernando">Fernando de Noronha</option>
                     </select>
                 </div>
                 <div class="form-group col-4">
@@ -162,13 +138,13 @@ if(isset($_SESSION)) {
                     <label class="form-check-label position-static" for="hotel">Translado:</label>
                     <div class="form-check">
                         <input class="form-check-input position-static" type="radio" id="sim" name="translado"
-                               value="sim">
+                               value="1">
                         <label class="form-check-label position-static" for="sim">Sim</label>
                     </div>
 
                     <div class="form-check">
                         <input class="form-check-input position-static" type="radio" id="nao" name="translado"
-                               value="nao">
+                               value="0">
                         <label class="form-check-label position-static" for="nao">Não</label>
                     </div>
                 </div>
@@ -181,19 +157,10 @@ if(isset($_SESSION)) {
                               placeholder="Digite sobre seu passeio"></textarea>
                 </div>
             </div>
-            <input class="btn btn-primary mr-3" type="submit" value="Confirmar"> <a href="sonho.php">Viagem do
+            <input class="btn btn-primary mr-3" type="submit" value="Confirmar"> <a href="../viagem/sonho.php">Viagem do
                 sonho!</a>
         </form>
 
     </div>
-    <?php
-    }else{
-
-        echo "Você não tem autorização para acessar essa pagina retorne para login: <a href=\"index.php\">Click Aqui</a>";
-
-    }
-
-
-?>
 
 <?php require_once 'layouts/footer.php'; ?>

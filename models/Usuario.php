@@ -34,7 +34,7 @@ class Usuario extends Model
     {
         //ID LOGIN SENHA NM_USUARIO CPF RG DT_NASCIMENTO NIVEL_USER LOGRADOURO NR_CASA CIDADE UF TELEFONE
        $stmt = $this->prepare("INSERT INTO $this->table (LOGIN, SENHA, NM_USUARIO, CPF, RG, DT_NASCIMENTO, NIVEL_USER, LOGRADOURO, NR_CASA, CIDADE, UF, TELEFONE) 
-                                                      VALUES (:LOGIN, :SENHA, :NOME,:CPF, :RG, :DATANASC, :TIPOUSUARIO, :LOGRADOURO, :NUMEROCASA, :CIDADE, :UF, :TEL)");
+                VALUES (:LOGIN, :SENHA, :NOME,:CPF, :RG, :DATANASC, :TIPOUSUARIO, :LOGRADOURO, :NUMEROCASA, :CIDADE, :UF, :TEL)");
        $stmt->bindParam(":LOGIN", $this->login);
        $stmt->bindParam(":SENHA", $this->senha);
        $stmt->bindParam(":NOME", $this->nome);
@@ -54,8 +54,8 @@ class Usuario extends Model
     public function delete($id)
     {
         $stmt = $this->prepare("DELETE FROM $this->table WHERE id = :ID");
-        $stmt->bindParam(":ID", $this->id);
-        $stmt->fetch();
+        $stmt->bindParam(":ID", $id);
+        $stmt->execute();
         $stmt->closeCursor();
     }
 
@@ -63,14 +63,13 @@ class Usuario extends Model
     {
         //LOGIN, SENHA, NM_USUARIO, CPF, RG, DT_NASCIMENTO, NIVEL_USER, LOGRADOURO, NR_CASA, CIDADE, UF, TELEFONE
 
-        $stmt = $this->prepare("UPDATE $this->table SET LOGIN = :LOGIN, SENHA = :SENHA, NM_USUARIO = :NOME, TELEFONE = :TEL,
+        $stmt = $this->prepare("UPDATE $this->table SET LOGIN = :LOGIN, NM_USUARIO = :NOME, TELEFONE = :TEL,
                                     RG = :RG, CPF = :CPF, DT_NASCIMENTO = :DATANASC, NIVEL_USER = :TIPOUSUARIO, LOGRADOURO = :LOGRADOURO,
                                     NR_CASA = :NUMEROCASA, CIDADE = :CIDADE, UF = :UF 
                                     WHERE id = :ID");
 
         $stmt->bindParam(":ID", $this->id);
         $stmt->bindParam(":LOGIN", $this->login);
-        $stmt->bindParam(":SENHA", $this->senha);
         $stmt->bindParam(":NOME", $this->nome);
         $stmt->bindParam(":TEL", $this->tel);
         $stmt->bindParam(":RG", $this->rg);

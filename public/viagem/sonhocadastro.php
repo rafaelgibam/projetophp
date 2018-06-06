@@ -22,7 +22,7 @@ $passeio = $_POST['passeio'];
     <p>Translado: <?= $translado ?></p><br>
     <p>Passeio: <?= $passeio ?></p>
   </div>
-  <a href="perfil.php" class="btn btn-primary">Voltar</a>
+  <a href="../usuario/perfil.php" class="btn btn-primary">Voltar</a>
 </div>
 
 

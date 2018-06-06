@@ -1,4 +1,4 @@
-<?php require_once 'layouts/header.php';
+<?php require_once __DIR__ . '/../layouts/header.php';
 
 if (isset ($_FILES['foto']))
 	{
@@ -9,7 +9,7 @@ if (isset ($_FILES['foto']))
 
 	$usuario = new \models\Usuario();
     $usuario->setLogin(isset($_POST['login']) ? $_POST['login'] : null );
-    $usuario->setSenha(isset($_POST['senha']) ? $_POST['senha'] : null);
+    $usuario->setSenha(isset($_POST['senha']) ? md5($_POST['senha']) : null);
     $usuario->setDatanasc(isset($_POST['nascimento']) ? $_POST['nascimento'] : null);
     $usuario->setNome(isset($_POST['nome']) ? $_POST['nome'] : null );
     $usuario->setTel(isset($_POST['tel'])) ? $_POST['tel'] : null;
@@ -99,10 +99,6 @@ if (isset ($_FILES['foto']))
             <input type="text" id="cpf" name="cpf" class="form-control">
           </div>
 
-          <div class="form-group col-6">
-            <label for="foto">Sua Foto</label>
-            <input type="file" id="foto" name="foto" class="form-control">
-          </div>
         </div>
 
         <div class="form-row">
@@ -111,4 +107,4 @@ if (isset ($_FILES['foto']))
         </div>
     </form>
 </div>
-<?php require_once 'layouts/footer.php'; ?>
+<?php require_once __DIR__ . '/../layouts/footer.php'; ?>
