@@ -1,4 +1,4 @@
-<?php require_once 'layouts/header.php';
+<?php require_once __DIR__ . '/../layouts/header.php';
 
 $destino = $_POST['estado'];
 $transporte = $_POST['transporte'];
@@ -174,4 +174,4 @@ if ($destino == "Recife"){
 </div>
 
 
-<?php require_once 'layouts/footer.php'; ?>
+<?php require_once __DIR__ . '/../layouts/footer.php'; ?>

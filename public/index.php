@@ -6,6 +6,7 @@
     if(isset($_SESSION['login']) && isset($_SESSION['senha'])){
         header("location: /usuario/perfil.php");
     }
+
 ?>
 
 <div class="container">

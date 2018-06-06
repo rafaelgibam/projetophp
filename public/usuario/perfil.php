@@ -65,9 +65,9 @@ $usu = $u->selectId($_SESSION['id']);
 
             <div class="form-row">
                 <div class="form-group col-12">
-                    <a href="?action=sair" class="btn btn-primary btn-block">Sair</a></br>
+                    <a href="?action=sair" class="btn btn-danger btn-block">Sair</a></br>
                     
-                    <a href="?action=lista" class="btn btn-danger btn-block">Lista de Usuarios</a>
+                    <a href="?action=lista" class="btn btn-primary btn-block">Lista de Usuarios</a>
                     
                 </div>
             </div>
@@ -87,20 +87,16 @@ $usu = $u->selectId($_SESSION['id']);
                 <div class="form-group col-4">
                     <label for="transporte">Transporte:</label>
                     <select class="custom-select" name="transporte">
-                        <?php foreach ($transportes as $key => $value): ?>
-                            <option value=<?php echo $value; ?>> <?php echo $value; ?> </option>
-                        <?php endforeach; ?>
+                        <option value="onibus">Ônibus</option>
+                        <option value="aviao">Avião</option>
+                        <option value="navio">Návio</option>
                     </select>
 
                 </div>
 
                 <div class="form-group col-4">
                     <label for="diarias">Diarias:</label>
-                    <select class="custom-select" name="diarias">
-                        <?php foreach ($diarias as $key => $value): ?>
-                            <option value=<?php echo $value; ?>> <?php echo $value; ?> </option>
-                        <?php endforeach; ?>
-                    </select>
+                    <input type="number" class="form-control">
                 </div>
 
             </div>
@@ -163,4 +159,4 @@ $usu = $u->selectId($_SESSION['id']);
 
     </div>
 
-<?php require_once 'layouts/footer.php'; ?>
+<?php require_once __DIR__ . '/../layouts/footer.php'; ?>

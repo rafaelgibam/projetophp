@@ -1,17 +1,18 @@
 <?php require_once __DIR__ . '/../layouts/header.php';
 
+session_start();
+
 $usuario = new \models\Usuario();
 
 if(isset($_GET['d'])){
     $usuario->delete($_GET['d']);
 }
 
-
 ?>
 
 <div class="container">
-    <div class="row">
-        <div class="col-md-12 form-cadastro">
+    <div class="row form-cadastro">
+        <div class="col-md-12">
             <?php include __DIR__ . "/../../errors.php"; ?>
             <table class="table table-hover">
                 <thead>
@@ -19,6 +20,7 @@ if(isset($_GET['d'])){
                     <th>Id</th>
                     <th>Nome</th>
                     <th>Login</th>
+                    <th>Ações</th>
                 </tr>
                 </thead>
 
@@ -35,6 +37,10 @@ if(isset($_GET['d'])){
                     </tr>
                     </tbody>
                 <?php endforeach; ?>
+            </table>
+        </div>
+        <div class="col-md-12">
+            <a href="/usuario/perfil.php" class="btn btn-danger btn-block">Voltar</a>
         </div>
     </div>
 </div>
