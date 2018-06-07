@@ -1,146 +1,11 @@
 <?php require_once __DIR__ . '/../layouts/header.php';
 
-$destino = $_POST['estado'];
-$transporte = $_POST['transporte'];
-$diarias  = $_POST['diarias'];
-
-$translado = $_POST['translado'];
-$translado =  (isset($_POST['translado'])) ? true : false;
-$hotel = $_POST['hotel'];
-$total = (isset($_POST['total'])) ? $_POST['total'] : null;
-$passeio = $_POST['passeio'];
-
-if($destino == "Recife"){
-    if($transporte== "Aviao" && $diarias== "Tres"){
-        $total = "R$3.000,00";
-    }
-    elseif ($transporte== "Aviao" && $diarias== "Dois") {
-      $total = "R$2.500,00";
-    }
-    elseif ($transporte== "Aviao" && $diarias== "Um") {
-      $total = "R$1.500,00";
-    }
-
-    if ($transporte== "Navio" && $diarias== "Tres") {
-      $total = "R$4.000,00";
-    }
-    elseif ($transporte== "Navio" && $diarias== "Dois") {
-      $total = "R$3.500,00";
-    }
-    elseif ($transporte== "Navio" && $diarias== "Um") {
-      $total = "R$2.500,00";
-    }
-
-    if ($transporte== "Onibus" && $diarias== "Tres") {
-      $total = "R$1.500,00";
-    }elseif ($transporte== "Onibus" && $diarias== "Dois") {
-      $total = "R$3.500,00";
-    }
-    elseif ($transporte== "Onibus" && $diarias== "Um") {
-      $total = "R$2.500,00";
-    }
-
-}
-
-elseif ($destino == "Natal") {
-    if($transporte== "Aviao" && $diarias== "Tres"){
-        $total = "R$3.000,00";
-    }
-      elseif ($transporte== "Aviao" && $diarias== "Dois") {
-        $total = "R$2.500,00";
-      }
-      elseif ($transporte== "Aviao" && $diarias== "Um") {
-        $total = "R$800,00";
-      }
-
-    if ($transporte== "Navio" && $diarias== "Tres") {
-      $total = "R$6.000,00";
-    }
-      elseif ($transporte== "Navio" && $diarias== "Dois") {
-        $total = "R$4.500,00";
-      }
-      elseif ($transporte== "Navio" && $diarias== "Um") {
-        $total = "R$3.500,00";
-      }
-
-    if ($transporte== "Onibus" && $diarias== "Tres") {
-      $total = "R$3.500,00";
-    }
-      elseif ($transporte== "Onibus" && $diarias== "Dois") {
-        $total = "R$2.500,00";
-      }
-      elseif ($transporte== "Onibus" && $diarias== "Um") {
-        $total = "R$500,00";
-      }
+session_start();
 
 
-}
-elseif ($destino == "Sirinhaem") {
-    if($transporte== "Aviao" && $diarias== "Tres"){
-        $total = "R$1.000,00";
-    }
-      elseif ($transporte== "Aviao" && $diarias== "Dois") {
-        $total = "R$700,00";
-      }
-      elseif ($transporte== "Aviao" && $diarias== "Um") {
-        $total = "R$500,00";
-      }
 
-    if ($transporte== "Navio" && $diarias== "Tres") {
-      $total = "R$2.000,00";
-    }
-      elseif ($transporte== "Navio" && $diarias== "Dois") {
-        $total = "R$1.500,00";
-      }
-      elseif ($transporte== "Navio" && $diarias== "Um") {
-        $total = "R$500,00";
-      }
+$v = new \models\Viagem();
 
-
-  if ($transporte== "Onibus" && $diarias=="Tres") {
-    $total = "R$800,00";
-  }
-    elseif ($transporte== "Onibus" && $diarias== "Dois") {
-      $total = "R$500,00";
-    }
-    elseif ($transporte== "Onibus" && $diarias== "Um") {
-      $total = "R$350,00";
-    }
-
-}
-
-elseif ($destino == "Porto") {
-  if($transporte== "Aviao" && $diarias== "Tres"){
-      $total = "R$4.000,00";
-  }
-    elseif ($transporte== "Aviao" && $diarias== "Dois") {
-      $total = "R$3.500,00";
-    }
-    elseif ($transporte== "Aviao" && $diarias== "Um") {
-      $total = "R$2.500,00";
-    }
-
-
-  if ($transporte== "Navio" && $diarias== "Tres") {
-    $total = "R$6.000,00";
-  }
-    elseif ($transporte== "Navio" && $diarias== "Dois") {
-      $total = "R$4.500,00";
-    }
-    elseif ($transporte== "Navio" && $diarias== "Um") {
-      $total = "R$3.500,00";
-    }
-
-  if ($transporte== "Onibus" && $diarias== "Tres") {
-    $total = "R$3.500,00";
-  }
-    elseif ($transporte== "Onibus" && $diarias== "Dois") {
-      $total = "R$2.500,00";
-    }
-    elseif ($transporte== "Onibus" && $diarias== "Um") {
-      $total = "R$500,00";
-    }
-}
 
 if ($destino == "Recife"){
 	$img =	 "uploads/recife.jpg";
@@ -154,6 +19,8 @@ if ($destino == "Recife"){
   elseif ($destino == "Porto") {
     $img = "uploads/sirinha.jpg";
   }
+
+
 
 ?>
 

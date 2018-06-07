@@ -11,18 +11,21 @@ if(isset($_POST['acessar'])) {
     foreach ($usuario->select() as $u) {
 
         if($_POST['login'] == $u->LOGIN  && md5($_POST['senha']) == $u->SENHA){
-            $login = $u->LOGIN;
-            $senha = $u->SENHA;
+             $login = $u->LOGIN;
+             $senha = $u->SENHA;
              $_SESSION["login"] = $u->LOGIN;
              $_SESSION["senha"] = $u->SENHA;
              $_SESSION["id"] = $u->ID;
-             header("location: usuario/perfil.php");
+             $_SESSION['tipo'] = $u->NIVEL_USER;
+
+             header("location: /usuario/perfil.php");
         }
         
     }
 
-     if($_POST['login'] != $login || md5($_POST['senha']) != $senha){
-             header("location: index.php?msg=errologin");
+    print_r($_SESSION);
+    if($_POST['login'] != $login || md5($_POST['senha']) != $senha){
+        header("location: /?msg=errologin");
     }
 }
 

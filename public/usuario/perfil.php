@@ -13,17 +13,29 @@ if(isset($_GET['action']) && $_GET['action'] == "sair"){
     session_destroy();
     header("location: /");
 }
-   
-if(isset($_GET['action']) && $_GET['action'] == "lista"){
-    session_destroy();
-    header("location: listausuarios.php");
-}
+
+/*
+$vc = new \controllers\ViagemController();
+if (isset($_POST['cadastrar-viagem'])){
+
+    $vc->cadastraViagem(
+        $_POST['destino'],
+        $_POST['transporte'],
+        $_POST['hotel'],
+        $_POST['translado'],
+        $_POST['passeio'],
+        $_POST['diarias'],
+        1,
+        $_SESSION['id']
+    );
+
+}*/
 
 $usu = $u->selectId($_SESSION['id']);
 
 ?>
     <div class="container">
-        <form class="form-perfil mt-5 mb-5" action="../viagem/resumo.php" method="post">
+        <form class="form-perfil mt-5 mb-5" method="post">
             <div class="form-row">
                 <div class="form-group col-2">
                     <label for="tipo">Tipo Usuário:</label>
@@ -66,9 +78,12 @@ $usu = $u->selectId($_SESSION['id']);
             <div class="form-row">
                 <div class="form-group col-12">
                     <a href="?action=sair" class="btn btn-danger btn-block">Sair</a></br>
-                    
-                    <a href="?action=lista" class="btn btn-primary btn-block">Lista de Usuarios</a>
-                    
+                    <?php if($_SESSION['tipo'] == 1): ?>
+                        <a href="/usuario/listausuarios.php" class="btn btn-primary btn-block">Lista de Usuarios</a>
+                        <a href="/usuario/listaviagem.php" class="btn btn-primary btn-block">Lista de Viagens</a>
+                    <?php else: ?>
+                        <a href="/usuario/listaviagem.php" class="btn btn-primary btn-block">Lista de Viagens</a>
+                    <?php endif; ?>
                 </div>
             </div>
             <h2 class="mt-5">Opções de Viagens</h2>
@@ -153,8 +168,8 @@ $usu = $u->selectId($_SESSION['id']);
                               placeholder="Digite sobre seu passeio"></textarea>
                 </div>
             </div>
-            <input class="btn btn-primary mr-3" type="submit" value="Confirmar"> <a href="../viagem/sonho.php">Viagem do
-                sonho!</a>
+            <input class="btn btn-primary mr-3" type="submit" name="cadastrar-viagem" value="Confirmar">
+            <a href="../viagem/sonho.php">Viagem do sonho!</a>
         </form>
 
     </div>

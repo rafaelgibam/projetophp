@@ -8,6 +8,9 @@ if(isset($_GET['d'])){
     $usuario->delete($_GET['d']);
 }
 
+if($_SESSION['tipo'] == 0){
+    header("location: /usuario/perfil.php");
+}
 ?>
 
 <div class="container">
@@ -24,7 +27,7 @@ if(isset($_GET['d'])){
                 </tr>
                 </thead>
 
-                <?php foreach($usuario->select() as $key=>$value): ?>
+                <?php foreach($usuario->select() as $key => $value): ?>
                     <tbody>
                     <tr>
                         <td><?php echo $value->ID; ?></td>
@@ -40,8 +43,12 @@ if(isset($_GET['d'])){
             </table>
         </div>
         <div class="col-md-12">
+            <a href="/usuario/cad_usuario.php" class="btn btn-primary btn-block">Cadastrar</a>
+        </div>
+        <div class="col-md-12 mt-2">
             <a href="/usuario/perfil.php" class="btn btn-danger btn-block">Voltar</a>
         </div>
+
     </div>
 </div>
 </table>

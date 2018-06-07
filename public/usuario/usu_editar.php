@@ -1,4 +1,7 @@
 <?php require_once __DIR__ . '/../layouts/header.php';
+
+    session_start();
+    
     $usuario = new \models\Usuario();
 
     if(isset($_POST['editar'])){
@@ -24,6 +27,10 @@
     if(isset($_GET['e'])){
        $u = $usuario->selectId($_GET['e']);
     }
+
+    if($_SESSION['tipo'] == 0){
+        header("location: /usuario/perfil.php");
+    }
 ?>
 
 <div class="container">
@@ -48,7 +55,7 @@
         </div>
 
         <div class="form-row">
-          <div class="form-group col-9">
+          <div class="form-group col-6">
             <label for="nome">Nome</label>
             <input type="text" id="nome" name="nome" class="form-control" value="<?= $u->NM_USUARIO ?>">
           </div>
@@ -56,6 +63,13 @@
             <label for="tel">Telefone</label>
             <input type="text" id="tel" name="tel" class="form-control" value="<?= $u->TELEFONE ?>">
           </div>
+            <div class="form-group col-3">
+                <label for="tipo">Tipo do Usuário</label>
+                <select name="tipo" id="tipo" class="form-control">
+                    <option value="0">Operacional</option>
+                    <option value="1">Administrador</option>
+                </select>
+            </div>
         </div>
 
         <div class="form-row">

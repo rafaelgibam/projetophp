@@ -1,11 +1,4 @@
-<?php require_once __DIR__ . '/../layouts/header.php';
-
-if (isset ($_FILES['foto']))
-	{
-	$ext = strtolower (substr($_FILES['foto'] ['name'], -4));
-	$dir = 'uploads/';
-		move_uploaded_file ($_FILES['foto'] ['tmp_name'], $dir . $_POST['nome'] . '001' . $ext);
-	}
+<?php require_once __DIR__ . '/layouts/header.php';
 
 	$usuario = new \models\Usuario();
     $usuario->setLogin(isset($_POST['login']) ? $_POST['login'] : null );
@@ -21,17 +14,17 @@ if (isset ($_FILES['foto']))
     $usuario->setCpf(isset($_POST['cpf']) ? $_POST['cpf'] : null);
     $usuario->setTipousuario(isset($_POST['tipo']) ? $_POST['tipo'] : null);
 
-    if(isset($_POST['cadastrar']) && count($usuario) > 0){
+    if(isset($_POST['cadastrar'])){
         $usuario->insert();
         unset($_POST['cadastrar']);
-        header("location: index.php");
+        header("location: /?msg=salvo");
     }
 
 ?>
 
 <div class="container">
     <form class="form-cadastro" method="post" enctype="multipart/form-data">
-        <input type="number" name="tipo" value="1" hidden>
+        <input type="number" name="tipo" value="0" hidden>
 
         <div class="form-row">
           <div class="form-group col-5">
