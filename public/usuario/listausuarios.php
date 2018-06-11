@@ -9,6 +9,7 @@ if(isset($_GET['d'])){
 }
 
 if($_SESSION['tipo'] == 0){
+    
     header("location: /usuario/perfil.php");
 }
 ?>
