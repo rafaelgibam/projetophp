@@ -2,7 +2,7 @@
 
 namespace models;
 
-class Viagem extends Model implements ICrud 
+class Viagem extends Model  
 {
 
    protected $table = "viagem";
@@ -20,7 +20,7 @@ class Viagem extends Model implements ICrud
 
    public function insert()
     {
-       $stmt = $this->prepare("INSERT INTO $this->table (DESTINO, PRECO, TRANSPORTE, NIVEL_HOTEL, TRANSLADO, DESCRICAO_VIAGEM, USUARIO_VIAGEM, TP_VIAGEM) VALUES (:DESTINO, :PRECO, :TRANSPORTE, :NIVELHOTEL, :TRANSLADO, :DESCRICAO, :DIARIAS, :USUARIOID, :TPVIAGEM));													 :DESCRICAO_VIAGEM, :DIARIAS, :USUARIO_VIAGEM, :PRECO_TOTAL)");
+       $stmt = $this->prepare("INSERT INTO $this->table (DESTINO, PRECO, TRANSPORTE, NIVEL_HOTEL, TRANSLADO, DESCRICAO_VIAGEM, USUARIO_VIAGEM, TP_VIAGEM) VALUES (:DESTINO, :PRECO, :TRANSPORTE, :NIVELHOTEL, :TRANSLADO, :DESCRICAO, :DIARIA, :USUARIOID, :TPVIAGEM));													 :DESCRICAO_VIAGEM, :DIARIA, :USUARIO_VIAGEM, :PRECO_TOTAL)");
       
        $stmt->bindParam(":DESTINO", $this->destino);
        $stmt->bindParam(":PRECO", $this->preco);
@@ -28,7 +28,7 @@ class Viagem extends Model implements ICrud
        $stmt->bindParam(":NIVELHOTEL", $this->nivelhotel);
        $stmt->bindParam(":TRANSLADO", $this->translado);
        $stmt->bindParam(":DESCRICAO", $this->descricao);
-       $stmt->bindParam(":DIARIAS", $this->diarias);
+       $stmt->bindParam(":DIARIA", $this->diarias);
        $stmt->bindParam(":TPVIAGEM", $this->tipo);
        $stmt->bindParam(":USUARIOID", $this->usuarioid);
        $stmt->execute();
@@ -43,24 +43,25 @@ class Viagem extends Model implements ICrud
         $stmt->closeCursor();
     }
 
-    public function update($id)
+   public function update()
     {
-        $stmt = $this->prepare("UPDATE $this->table SET DESTINO = :DESTINO, PRECO = :PRECO, TRANSPORTE = :TRANSPORTE, NIVEL_HOTEL = :NIVEL_HOTEL, TRANSLADO = :TRANSLADO,
-                                     DESCRICAO_VIAGEM = :DESCRICAO_VIAGEM , DIARIA = :DIARIAS, USUARIO_VIAGEM = :USUARIO_VIAGEM
-                                     WHERE id = :ID)");
-        $stmt->bindParam(":ID", $id);
-        $stmt->bindParam(":DESTINO", $this->login);
-        $stmt->bindParam(":PRECO", $this->senha);
-        $stmt->bindParam(":TRANSPORTE", $this->nome);
-        $stmt->bindParam(":NIVEL_HOTEL", $this->tel);
-        $stmt->bindParam(":TRANSLADO", $this->email);
-        $stmt->bindParam(":DESCRICAO_VIAGEM", $this->rg);
-        $stmt->bindParam(":DIARIAS", $this->cpf);
-        $stmt->bindParam(":USUARIO_VIAGEM", $this->datanasc);
-        $stmt->bindParam(":PRECO_TOTAL", $this->tipousuario);
+        $stmt = $this->prepare("UPDATE $this->table SET DESTINO = :DESTINO, PRECO = :PRECO, TRANSPORTE = :TRANSPORTE
+        , NIVEL_HOTEL = :NIVEL_HOTEL, TRANSLADO = :TRANSLADO, DESCRICAO_VIAGEM = :DESCRICAO_VIAGEM , DIARIA = :DIARIA
+        , USUARIO_VIAGEM = :USUARIO_VIAGEM WHERE id = :ID");
+        
+        $stmt->bindParam(":ID", $this->id);
+        $stmt->bindParam(":DESTINO", $this->destino);
+        $stmt->bindParam(":PRECO", $this->preco);
+        $stmt->bindParam(":TRANSPORTE", $this->transporte);
+        $stmt->bindParam(":NIVEL_HOTEL", $this->nivelhotel);
+        $stmt->bindParam(":TRANSLADO", $this->translado);
+        $stmt->bindParam(":DESCRICAO_VIAGEM", $this->descricao);
+        $stmt->bindParam(":DIARIA", $this->diarias);
+        $stmt->bindParam(":USUARIO_VIAGEM", $this->usuarioid);
         $stmt->execute();
         $stmt->closeCursor();
     }
+
 
     /**
      * @return mixed
