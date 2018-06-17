@@ -16,21 +16,32 @@ class Viagem extends Model
    private $descricao;
    private $diarias;
    private $tipo;
-   private $usuarioid; // Objeto de Usuario
+   private $usuarioviagem; // Objeto de Usuario
+   private $data;
+   private $hora;
+   private $pagamento;
+   
+   
 
    public function insert()
     {
-       $stmt = $this->prepare("INSERT INTO $this->table (DESTINO, PRECO, TRANSPORTE, NIVEL_HOTEL, TRANSLADO, DESCRICAO_VIAGEM, USUARIO_VIAGEM, TP_VIAGEM) VALUES (:DESTINO, :PRECO, :TRANSPORTE, :NIVELHOTEL, :TRANSLADO, :DESCRICAO, :DIARIA, :USUARIOID, :TPVIAGEM));													 :DESCRICAO_VIAGEM, :DIARIA, :USUARIO_VIAGEM, :PRECO_TOTAL)");
+       $stmt = $this->prepare("INSERT INTO $this->table (DESTINO, PRECO, TRANSPORTE, DIARIA, NIVEL_HOTEL, TRANSLADO, DESCRICAO_VIAGEM, USUARIO_VIAGEM, TP_VIAGEM, DATAVIAGEM, HORA, PAGAMENTO) 
+           VALUES (:DESTINO, :PRECO, :TRANSPORTE, :DIARIA, :NIVELHOTEL, :TRANSLADO, :DESCRICAO, 
+           :USUARIOVIAGEM, :TPVIAGEM, DATAVIAGEM, HORAVIAGEM, TIPOPAGAMENTO)");
       
        $stmt->bindParam(":DESTINO", $this->destino);
        $stmt->bindParam(":PRECO", $this->preco);
        $stmt->bindParam(":TRANSPORTE", $this->transporte);
+       $stmt->bindParam(":DIARIA", $this->diarias);
        $stmt->bindParam(":NIVELHOTEL", $this->nivelhotel);
        $stmt->bindParam(":TRANSLADO", $this->translado);
        $stmt->bindParam(":DESCRICAO", $this->descricao);
-       $stmt->bindParam(":DIARIA", $this->diarias);
+       $stmt->bindParam(":USUARIOVIAGEM", $this->usuarioviagem);
        $stmt->bindParam(":TPVIAGEM", $this->tipo);
-       $stmt->bindParam(":USUARIOID", $this->usuarioid);
+       $stmt->bindParam(":DATAVIAGEM", $this->usuarioviagem);
+       $stmt->bindParam(":HORAVIAGEM", $this->data);
+       $stmt->bindParam(":TIPOPAGAMENTO", $this->pagamento);
+
        $stmt->execute();
        $stmt->closeCursor();
     }
@@ -45,19 +56,26 @@ class Viagem extends Model
 
    public function update()
     {
-        $stmt = $this->prepare("UPDATE $this->table SET DESTINO = :DESTINO, PRECO = :PRECO, TRANSPORTE = :TRANSPORTE
-        , NIVEL_HOTEL = :NIVEL_HOTEL, TRANSLADO = :TRANSLADO, DESCRICAO_VIAGEM = :DESCRICAO_VIAGEM , DIARIA = :DIARIA
-        , USUARIO_VIAGEM = :USUARIO_VIAGEM WHERE id = :ID");
+        $stmt = $this->prepare("UPDATE $this->table SET DESTINO = :DESTINO, PRECO = :PRECO, 
+        TRANSPORTE = :TRANSPORTE, DIARIA = :DIARIA, NIVEL_HOTEL = :NIVELHOTEL, TRANSLADO = :TRANSLADO,
+        DESCRICAO_VIAGEM = :DESCRICAO , USUARIO_VIAGEM = :USUARIOVIAGEM, TP_VIAGEM = :TPVIAGEM, 
+        DATA = :DATAVIAGEM, HORA = :HORAVIAGEM, PAGAMENTO = :TIPOPAGAMENTO WHERE id = :ID");
         
         $stmt->bindParam(":ID", $this->id);
         $stmt->bindParam(":DESTINO", $this->destino);
         $stmt->bindParam(":PRECO", $this->preco);
         $stmt->bindParam(":TRANSPORTE", $this->transporte);
-        $stmt->bindParam(":NIVEL_HOTEL", $this->nivelhotel);
-        $stmt->bindParam(":TRANSLADO", $this->translado);
-        $stmt->bindParam(":DESCRICAO_VIAGEM", $this->descricao);
         $stmt->bindParam(":DIARIA", $this->diarias);
-        $stmt->bindParam(":USUARIO_VIAGEM", $this->usuarioid);
+        $stmt->bindParam(":NIVELHOTEL", $this->nivelhotel);
+        $stmt->bindParam(":TRANSLADO", $this->translado);
+        $stmt->bindParam(":DESCRICAO", $this->descricao);
+        $stmt->bindParam(":USUARIOVIAGEM", $this->usuarioid);
+        $stmt->bindParam(":TPVIAGEM", $this->tipo);
+        $stmt->bindParam(":DATAVIAGEM", $this->usuarioviagem);
+        $stmt->bindParam(":HORAVIAGEM", $this->data);
+        $stmt->bindParam(":TIPOPAGAMENTO", $this->pagamento);
+
+
         $stmt->execute();
         $stmt->closeCursor();
     }
@@ -210,17 +228,67 @@ class Viagem extends Model
     /**
      * @return mixed
      */
-    public function getUsuarioid()
+    public function getUsuarioviagem()
     {
-        return $this->usuarioid;
+        return $this->usuarioviagem;
     }
 
     /**
      * @param mixed $usuarioid
      */
-    public function setUsuarioid($usuarioid)
+    public function setUsuarioviagem($usuarioviagem)
     {
-        $this->usuarioid = $usuarioid;
+        $this->usuarioviagem = $usuarioviagem;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getData()
+    {
+        return $this->data;
+    }
+
+    /**
+     * @param mixed $usuarioid
+     */
+    public function setData($data)
+    {
+        $this->data = $data;
+    }
+
+
+        /**
+     * @return mixed
+     */
+    public function getHora()
+    {
+        return $this->hora;
+    }
+
+    /**
+     * @param mixed $usuarioid
+     */
+    public function setHora($hora)
+    {
+        $this->hora = $hora;
+    }
+
+
+        /**
+     * @return mixed
+     */
+    public function getPagamento()
+    {
+        return $this->pagamento;
+    }
+
+    /**
+     * @param mixed $usuarioid
+     */
+    public function setPagamento($pagamento)
+    {
+        $this->pagamento = $pagamento;
     }
 
 
