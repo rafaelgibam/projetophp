@@ -114,6 +114,25 @@ $usu = $u->selectId($_SESSION['id']);
                     <input type="number" class="form-control">
                 </div>
 
+                <div class="form-group col-4">
+                   <label for="tipopagamento">Tipo do pagamento:</label>
+                    <select class="custom-select" name="pagamento">
+                        <option value="Boleto">Boleto</option>
+                        <option value="Cartão">Cartão</option>
+                    </select>
+                </div>
+
+                <div class="form-group col-4">
+                    <label for="data">Data da viagem: </label>
+                    <input type="date" id="data" name="data" class="form-control">
+                </div> 
+
+                <div class="form-group col-4">
+                    <label for="hora">Hora da viagem: </label>
+                    <input type="time" id="hora" name="hora" class="form-control">
+                </div> 
+
+
             </div>
 
             <div class="form-row mt-5">
