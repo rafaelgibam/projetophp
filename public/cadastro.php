@@ -5,7 +5,7 @@
     $usuario->setSenha(isset($_POST['senha']) ? md5($_POST['senha']) : null);
     $usuario->setDatanasc(isset($_POST['nascimento']) ? $_POST['nascimento'] : null);
     $usuario->setNome(isset($_POST['nome']) ? $_POST['nome'] : null );
-    $usuario->setTel(isset($_POST['tel'])) ? $_POST['tel'] : null;
+    $usuario->setTel(isset($_POST['tel']) ? $_POST['tel'] : null);
     $usuario->setLogradouro(isset($_POST['logradouro']) ? $_POST['logradouro'] : null);
     $usuario->setCidade(isset($_POST['cidade']) ? $_POST['cidade'] : null);
     $usuario->setUf(isset($_POST['uf']) ? $_POST['uf'] : null);

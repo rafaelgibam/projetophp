@@ -80,9 +80,9 @@ $usu = $u->selectId($_SESSION['id']);
                     <a href="?action=sair" class="btn btn-danger btn-block">Sair</a></br>
                     <?php if($_SESSION['tipo'] == 1): ?>
                         <a href="/usuario/listausuarios.php" class="btn btn-primary btn-block">Lista de Usuarios</a>
-                        <a href="/usuario/listaviagem.php" class="btn btn-primary btn-block">Lista de Viagens</a>
+                        <a href="/viagem/listaviagem.php" class="btn btn-primary btn-block">Lista de Viagens</a>
                     <?php else: ?>
-                        <a href="/usuario/listaviagem.php" class="btn btn-primary btn-block">Lista de Viagens</a>
+                        <a href="/viagem/listaviagem.php" class="btn btn-primary btn-block">Lista de Viagens</a>
                     <?php endif; ?>
                 </div>
             </div>

@@ -61,7 +61,7 @@ if(isset($_GET['d'])){
             </table>
         </div>
         <div class="col-md-12">
-            <a href="" class="btn btn-danger btn-block">Voltar</a>
+            <a href="/usuario/perfil.php" class="btn btn-danger btn-block">Voltar</a>
         </div>
     </div>
 </div>
