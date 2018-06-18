@@ -11,7 +11,7 @@ body{
 
 .form-login {
   background: white;
-  margin: 8em 0 20em 0;
+  margin: 2em 0 20em 0;
   padding: 2em;
   border-radius: 1em;
   box-shadow: 0px 20px 30px -13px;
@@ -19,7 +19,7 @@ body{
 
 .form-cadastro {
   background: white;
-  margin: 6em 0 14em 0;
+  margin: 1em 0 14em 0;
   padding: 2em;
   border-radius: 1em;
   box-shadow: 0px 20px 30px -13px;

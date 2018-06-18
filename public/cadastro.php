@@ -23,6 +23,11 @@
 ?>
 
 <div class="container">
+    <div class="row">
+        <div class="col-md-12 text-center mt-4">
+            <a href="/"> <img src="assets/img/logo.png" width="200" height="auto" alt=""></a>
+        </div>
+    </div>
     <form class="form-cadastro" method="post" enctype="multipart/form-data">
         <input type="number" name="tipo" value="0" hidden>
 
@@ -96,8 +101,8 @@
 
         <div class="form-row">
           <input type="submit" name="cadastrar" value="Cadastrar" class="btn btn-primary mr-2">
-          <a href="index.php" class="btn btn-danger">Voltar</a>
+          <a href="login.php" class="btn btn-danger">Voltar</a>
         </div>
     </form>
 </div>
-<?php require_once __DIR__ . '/../layouts/footer.php'; ?>
+<?php require_once __DIR__ . '/layouts/footer.php'; ?>

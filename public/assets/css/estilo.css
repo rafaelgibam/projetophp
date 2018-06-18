@@ -1,0 +1,200 @@
+/*	 
+*
+* @author Rafael Willames
+* @version 0.1
+*/
+/* ==================== fonts ====================*/
+
+@import url('https://fonts.googleapis.com/css?family=Roboto:400,500,700,900');
+
+/* ==================== layout ====================*/
+
+html,body, .capa{
+	height: 100%;
+}
+
+body {
+	background: url('/../assets/img/slider-turismo-mundo.png'),
+				url('/../assets/img/ruido.png'),
+				linear-gradient(50deg, #ff4169,#7c26f8);
+	background-attachment: fixed;
+	font-family: 'Roboto',sans-serif;
+    overflow-x: hidden;
+				
+}
+
+/* -- Barra Navegação -- */
+
+.img-logo {
+	width: 150px;
+	height:120px;
+	display: block;
+	background: url('/../assets/img/logo.png') no-repeat;
+	background-size: contain;
+	color: transparent;
+}
+
+nav.navbar-transparent {
+	padding: 15px 0;
+	background: rgba(0, 0, 0, 0.6);
+	border: none;
+}
+
+.navbar-brand {
+	padding: 5px;
+}
+
+.divisor {
+	width: 2px;
+	height: 20px;
+	background: white;
+	margin: 15px 10px;
+}
+
+.navbar-inverse .navbar-nav>li>a, footer .nav a{
+	color: white;
+}
+
+.navbar-inverse .navbar-nav>li>a:hover, footer .nav a:hover {
+	color: #9bf0e1;
+    background: none;
+}
+
+/* -- Imagens de Capa -- */
+
+.capa {
+	display: table;
+	width: 100%;
+}
+
+.texto-capa {
+	text-align: center;
+	color: white;
+	display: table-cell;
+	vertical-align: middle;
+}
+
+/* -- Botões Pricipal -- */
+.btn-custom {
+	color: white;
+	border-radius: 500px;
+	-webkit-border-radius: 500px;
+	-moz-border-radius: 500px;
+	padding: 15px 35px;
+	text-transform: uppercase;
+	margin: 15px 15px;
+	font-weight: 900;
+	letter-spacing: 1px;
+	transition: background 0.4s, color 0.4s;
+}
+
+.btn-roxo {
+	background: #7c28f7;
+	color: white;
+}
+
+.btn-roxo:hover {
+	background: #6207e3;
+	color: white;
+	
+}
+
+.btn-branco {
+	border: 2px solid white;
+}
+
+.btn-branco:hover {
+	background: white;
+	color: black;
+}
+
+/* -- Conteudo Serviços -- */
+
+#servicos {
+	background: white;
+    padding: 20px 0; 
+}
+
+#servicos img {
+	margin: 15px 0;
+	display: block;
+	width: 100%;
+	height:auto;
+	background-size: cover;
+}
+
+#servicos .row {
+	padding: 0;
+}
+
+/* -- Conteudo Recursos -- */
+
+#recursos {
+	background: transparent;
+	padding: 20px 0;
+}
+
+.rotacionar {
+    transform: rotate(30deg);
+    -ms-transform: rotate(30deg); /* IE 9*/
+    -webkit-transform: rotate(30deg);/* Chrome, Safari, Opera */
+    padding-left: 55px;
+}
+
+/* -- Rodapé -- */
+
+footer{
+    background: black;
+    color: white;
+    padding: 60px 0;
+    position: relative;
+}
+
+.itens-rede-sociais {
+    float: right;
+}
+
+/* ==================== tipografia ====================*/
+
+h1 {
+	font-size: 125px;
+	font-weight: 900;
+	letter-spacing: -0.03em;
+	margin-bottom: 50px;
+}
+
+h2 {
+	font-size: 50px;
+	font-weight: 700;
+	letter-spacing: -0.03em;
+}
+
+h3 {
+	font-size: 35px;
+	font-weight: 700;
+	letter-spacing: -0.03em;
+}
+
+
+
+p{
+    font-size: 16px;
+}
+
+#servicos h2, #servicos h3{
+	color: #7c25f8;
+}
+
+#recursos h2, #recursos h3{
+	color: white;
+}
+
+#recursos p {
+    color: white;
+}
+
+#rodape h4 {
+    color: #919496;
+    font-size: 12px;
+    text-transform: uppercase;
+}

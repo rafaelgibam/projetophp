@@ -11,7 +11,7 @@ if(!isset($_SESSION['login']) && !isset($_SESSION['senha'])){
 
 if(isset($_GET['action']) && $_GET['action'] == "sair"){
     session_destroy();
-    header("location: /");
+    header("location: /login.php");
 }
 
 /*

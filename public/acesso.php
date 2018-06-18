@@ -25,7 +25,7 @@ if(isset($_POST['acessar'])) {
 
     print_r($_SESSION);
     if($_POST['login'] != $login || md5($_POST['senha']) != $senha){
-        header("location: /?msg=errologin");
+        header("location: /login.php?msg=errologin");
     }
 
     //teste git Paulo advanced
