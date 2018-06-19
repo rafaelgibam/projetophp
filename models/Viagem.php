@@ -23,11 +23,12 @@ class Viagem extends Model
    
    
 
-   public function insert()
+   
+public function insert()
     {
-       $stmt = $this->prepare("INSERT INTO $this->table (DESTINO, PRECO, TRANSPORTE, DIARIA, NIVEL_HOTEL, TRANSLADO, DESCRICAO_VIAGEM, USUARIO_VIAGEM, TP_VIAGEM, DATAVIAGEM, HORA, PAGAMENTO) 
-           VALUES (:DESTINO, :PRECO, :TRANSPORTE, :DIARIA, :NIVELHOTEL, :TRANSLADO, :DESCRICAO, 
-           :USUARIOVIAGEM, :TPVIAGEM, DATAVIAGEM, HORAVIAGEM, TIPOPAGAMENTO)");
+       $stmt = $this->prepare("INSERT INTO $this->table (DESTINO, PRECO, TRANSPORTE, DIARIA, NIVEL_HOTEL, TRANSLADO, DESCRICAO_VIAGEM, USUARIO_VIAGEM,TP_VIAGEM, DATAVIAGEM, HORA, PAGAMENTO) 
+           VALUES (:DESTINO, :PRECO, :TRANSPORTE, :DIARIA, :NIVELHOTEL, :TRANSLADO, :DESCRICAO, :USUARIOVIAGEM,
+           :TIPO ,:DATAVIAGEM, :HORAVIAGEM, :TIPOPAGAMENTO)");
       
        $stmt->bindParam(":DESTINO", $this->destino);
        $stmt->bindParam(":PRECO", $this->preco);
@@ -37,14 +38,21 @@ class Viagem extends Model
        $stmt->bindParam(":TRANSLADO", $this->translado);
        $stmt->bindParam(":DESCRICAO", $this->descricao);
        $stmt->bindParam(":USUARIOVIAGEM", $this->usuarioviagem);
-       $stmt->bindParam(":TPVIAGEM", $this->tipo);
-       $stmt->bindParam(":DATAVIAGEM", $this->usuarioviagem);
-       $stmt->bindParam(":HORAVIAGEM", $this->data);
+       $stmt->bindParam(":TIPO", $this->tipo);
+       $stmt->bindParam(":DATAVIAGEM", $this->data);
+       $stmt->bindParam(":HORAVIAGEM", $this->hora);
        $stmt->bindParam(":TIPOPAGAMENTO", $this->pagamento);
-
        $stmt->execute();
        $stmt->closeCursor();
     }
+
+
+
+
+
+
+
+
 
     public function delete($id)
     {
