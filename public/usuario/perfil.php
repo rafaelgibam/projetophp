@@ -2,8 +2,6 @@
 
 session_start();
 
-$u = new \models\Usuario();
-
 if(!isset($_SESSION['login']) && !isset($_SESSION['senha'])){
     session_destroy();
     header("location: /");
@@ -14,22 +12,29 @@ if(isset($_GET['action']) && $_GET['action'] == "sair"){
     header("location: /login.php");
 }
 
-/*
-$vc = new \controllers\ViagemController();
-if (isset($_POST['cadastrar-viagem'])){
 
-    $vc->cadastraViagem(
-        $_POST['destino'],
-        $_POST['transporte'],
-        $_POST['hotel'],
-        $_POST['translado'],
-        $_POST['passeio'],
-        $_POST['diarias'],
-        1,
-        $_SESSION['id']
-    );
+    $viagem = new \models\Viagem();
+    $viagem->setDestino(isset($_POST['estado']) ? $_POST['estado'] : null);
+    $viagem->setTransporte(isset($_POST['transporte']) ? $_POST['transporte'] : null );
+    $viagem->setNivelhotel(isset($_POST['hotel']) ? $_POST['hotel'] : null);
+    $viagem->setTranslado(isset($_POST['translado']) ? $_POST['translado'] : null);
+    $viagem->setDescricao(isset($_POST['passeio']) ? $_POST['passeio'] : null);
+    $viagem->setDiarias(isset($_POST['diarias']) ? $_POST['diarias'] : null);
+    $viagem->setData(isset($_POST['data']) ? $_POST['data'] : null);
+    $viagem->setHora(isset($_POST['hora']) ? $_POST['hora'] : null);
+    $viagem->setUsuarioviagem(isset($_POST['usu_cad']) ? $_POST['usu_cad'] : null);
+    $viagem->setPagamento(isset($_POST['pagamento']) ? $_POST['pagamento'] : null);
 
-}*/
+    if(isset($_POST['cadastrar_viagem'])){
+        $viagem->insert();
+        unset($_POST['cadastrar_viagem']);
+        
+     header("location: /viagem/listaviagem.php");
+
+    }
+
+
+$u = new \models\Usuario();
 
 $usu = $u->selectId($_SESSION['id']);
 
@@ -39,6 +44,7 @@ $usu = $u->selectId($_SESSION['id']);
             <div class="form-row">
                 <div class="form-group col-2">
                     <label for="tipo">Tipo Usuário:</label>
+
                     <input type="text" class="form-control" disabled value="<?= ($usu->NIVEL_USER == 1) ? "ADMINISTRADOR" : "OPERACIONAL" ?>">
                 </div>
 
@@ -111,12 +117,12 @@ $usu = $u->selectId($_SESSION['id']);
 
                 <div class="form-group col-4">
                     <label for="diarias">Diarias:</label>
-                    <input type="number" class="form-control">
+                    <input type="number" class="form-control" name="diarias" id="diarias">
                 </div>
 
                 <div class="form-group col-4">
                    <label for="tipopagamento">Tipo do pagamento:</label>
-                    <select class="custom-select" name="pagamento">
+                    <select class="custom-select" name="pagamento" id="pagamento">
                         <option value="Boleto">Boleto</option>
                         <option value="Cartão">Cartão</option>
                     </select>
@@ -131,8 +137,10 @@ $usu = $u->selectId($_SESSION['id']);
                     <label for="hora">Hora da viagem: </label>
                     <input type="time" id="hora" name="hora" class="form-control">
                 </div> 
-
-
+                <div class="form-group col-4">
+                <label for="hora">Cliente da compra: </label>
+                <input type="text" name="usu_cad" id="usu_cad" class="form-control" value="<?= $usu->NM_USUARIO ?>">
+                 </div>
             </div>
 
             <div class="form-row mt-5">
@@ -177,6 +185,7 @@ $usu = $u->selectId($_SESSION['id']);
                                value="0">
                         <label class="form-check-label position-static" for="nao">Não</label>
                     </div>
+
                 </div>
             </div>
 
@@ -187,7 +196,7 @@ $usu = $u->selectId($_SESSION['id']);
                               placeholder="Digite sobre seu passeio"></textarea>
                 </div>
             </div>
-            <input class="btn btn-primary mr-3" type="submit" name="cadastrar-viagem" value="Confirmar">
+            <input class="btn btn-primary mr-3" type="submit" name="cadastrar_viagem" value="Comprar">
             <a href="../viagem/sonho.php">Viagem do sonho!</a>
         </form>
 
