@@ -26,9 +26,10 @@ if(isset($_GET['d'])){
                     <th>Translado</th>
                     <th>Diaria</th>    
                     <th>Usuario</th>
-                    <th>Tipo da viagem</th>
+                    <th>Hora</th>
+                    <th>Data</th>
+                    <th>Pagamento</th>
                     
-                    <th>Descrição da viagem</th>
                     
                     
                     <th>Ações</th>
@@ -46,8 +47,10 @@ if(isset($_GET['d'])){
                         <td><?php echo $value->TRANSLADO; ?></td>
                         <td><?php echo $value->DIARIA; ?></td>
                         <td><?php echo $value->USUARIO_VIAGEM; ?></td>
-                        <td><?php echo $value->TP_VIAGEM; ?></td>
-                        <td><?php echo $value->DESCRICAO_VIAGEM; ?></td>
+                        <td><?php echo $value->HORA; ?></td>
+                        <td><?php echo $value->DATAVIAGEM; ?></td>
+                        <td><?php echo $value->PAGAMENTO; ?></td>
+                        
                         
                         <td>
                     
