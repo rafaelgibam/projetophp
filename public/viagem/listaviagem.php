@@ -18,6 +18,7 @@ if(isset($_GET['d'])){
             <table class="table table-hover">
                 <thead>
                 <tr>
+                    //tabela
                     <th>ID</th>
                     <th>Destino</th>
                     <th>Preço</th>
