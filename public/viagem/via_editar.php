@@ -1,5 +1,5 @@
 <?php require_once __DIR__ . '/../layouts/header.php';
-    
+
     $viagem = new \models\Viagem();
     session_start();
 
@@ -13,15 +13,15 @@
         $viagem->setDescricao(isset($_POST['passeio']) ? $_POST['passeio'] : null);
         $viagem->setDiarias(isset($_POST['diarias']) ? $_POST['diarias'] : null);
         $viagem->update();
-        
+
         header("location: /viagem/listaviagem.php?msg=editado");
-    
+
     }
-   
+
     if(isset($_GET['e'])){
 
         $via = $viagem->selectId($_GET['e']);
- 
+
     }
 
 
@@ -112,7 +112,7 @@
                     <label for="passeio" class="mt-5">Passeio:</label><br>
                     <textarea class="form-control" name="passeio" id="passeio" rows="12" cols="80"
                               placeholder="Digite sobre seu passeio" value="<?= $via->DESCRICAO_VIAGEM?>"></textarea>
-                </div> 
+                </div>
             </div>
             <input type="submit" value="Confirmar" name="editar" class="btn btn-primary mr-2">
         </form>

@@ -14,25 +14,23 @@ if(isset($_GET['action']) && $_GET['action'] == "sair"){
 
 
     $viagem = new \models\Viagem();
-    $viagem->setDestino(isset($_POST['estado']) ? $_POST['estado'] : null);
-    $viagem->setTransporte(isset($_POST['transporte']) ? $_POST['transporte'] : null );
-    $viagem->setNivelhotel(isset($_POST['hotel']) ? $_POST['hotel'] : null);
-    $viagem->setTranslado(isset($_POST['translado']) ? $_POST['translado'] : null);
-    $viagem->setDescricao(isset($_POST['passeio']) ? $_POST['passeio'] : null);
-    $viagem->setDiarias(isset($_POST['diarias']) ? $_POST['diarias'] : null);
-    $viagem->setData(isset($_POST['data']) ? $_POST['data'] : null);
-    $viagem->setHora(isset($_POST['hora']) ? $_POST['hora'] : null);
-    $viagem->setUsuarioviagem(isset($_POST['usu_cad']) ? $_POST['usu_cad'] : null);
-    $viagem->setPagamento(isset($_POST['pagamento']) ? $_POST['pagamento'] : null);
-
     if(isset($_POST['cadastrar_viagem'])){
+
+      $viagem->setDestino(isset($_POST['estado']) ? $_POST['estado'] : null);
+      $viagem->setTransporte(isset($_POST['transporte']) ? $_POST['transporte'] : null );
+      $viagem->setNivelhotel(isset($_POST['hotel']) ? $_POST['hotel'] : null);
+      $viagem->setTranslado(isset($_POST['translado']) ? $_POST['translado'] : null);
+      $viagem->setDescricao(isset($_POST['passeio']) ? $_POST['passeio'] : null);
+      $viagem->setDiarias(isset($_POST['diarias']) ? $_POST['diarias'] : null);
+      $viagem->setData(isset($_POST['data']) ? $_POST['data'] : null);
+      $viagem->setHora(isset($_POST['hora']) ? $_POST['hora'] : null);
+      $viagem->setUsuarioviagem(isset($_POST['usu_cad']) ? $_POST['usu_cad'] : null);
+      $viagem->setPagamento(isset($_POST['pagamento']) ? $_POST['pagamento'] : null);
         $viagem->insert();
         unset($_POST['cadastrar_viagem']);
-        
-     header("location: /viagem/listaviagem.php");
+     header("location: /viagem/listaviagem.php?msg=salvo");
 
     }
-
 
 $u = new \models\Usuario();
 
@@ -131,12 +129,12 @@ $usu = $u->selectId($_SESSION['id']);
                 <div class="form-group col-4">
                     <label for="data">Data da viagem: </label>
                     <input type="date" id="data" name="data" class="form-control">
-                </div> 
+                </div>
 
                 <div class="form-group col-4">
                     <label for="hora">Hora da viagem: </label>
                     <input type="time" id="hora" name="hora" class="form-control">
-                </div> 
+                </div>
                 <div class="form-group col-4">
                 <label for="hora">Cliente da compra: </label>
                 <input type="text" name="usu_cad" id="usu_cad" class="form-control" value="<?= $usu->NM_USUARIO ?>">
